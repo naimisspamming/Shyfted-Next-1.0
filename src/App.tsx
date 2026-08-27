@@ -67,10 +67,12 @@ export default function App() {
             <iframe
               src="https://www.youtube-nocookie.com/embed/fbSaIHpeP-c?autoplay=1&mute=1&loop=1&playlist=fbSaIHpeP-c&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&playsinline=1&enablejsapi=1&fs=0&autohide=1"
               title="Hero Background Video"
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300vw] h-[168.75vw] min-w-[177.77vh] min-h-[100vh] max-w-none max-h-none pointer-events-none opacity-60 border-0 outline-none select-none scale-125 transition-opacity duration-1000 grayscale contrast-125 saturate-0"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300vw] h-[200vw] min-w-[200vh] min-h-[120vh] max-w-none max-h-none pointer-events-none opacity-60 border-0 outline-none select-none scale-125 transition-opacity duration-1000 grayscale contrast-125 saturate-0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               tabIndex={-1}
             />
+            {/* Transparent overlay to completely block interaction with the iframe */}
+            <div className="absolute inset-0 w-full h-full z-10" />
           </div>
           {/* Smooth feather overlay: clear at top, smoothly transitioning down to 90% solid background (leaving ~10% effective video visibility at bottom) */}
           <div
