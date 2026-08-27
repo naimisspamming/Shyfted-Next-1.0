@@ -222,12 +222,11 @@ export const ContactDrawer: React.FC<ContactDrawerProps> = ({
                   {/* Service Selection */}
                   <div className="space-y-1.5">
                     <label className="text-[11px] font-medium text-purple-200">Service Required *</label>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
+                    <div className="grid grid-cols-3 gap-1.5">
                       {[
                         { id: 'video-editing', label: 'Video Editing' },
-                        { id: 'website-redesign', label: 'Web Redesign' },
-                        { id: 'google-visibility', label: 'Google Visibility' },
-                        { id: 'all-inclusive', label: 'All-in-One Growth' },
+                        { id: 'website-redesign', label: 'Website Redesigning' },
+                        { id: 'all-inclusive', label: 'Both / Full Growth' },
                       ].map((srv) => (
                         <button
                           key={srv.id}

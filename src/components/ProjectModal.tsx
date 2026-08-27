@@ -48,9 +48,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 <span className="px-2.5 py-0.5 rounded-md bg-purple-500/20 border border-purple-400/30 text-purple-300 text-[10px] font-bold uppercase tracking-wider">
                   {project.service === 'video-editing'
                     ? '🎬 Video Editing'
-                    : project.service === 'website-redesign'
-                    ? '💻 Website Redesign'
-                    : '🔍 Google Visibility'}
+                    : '💻 Website Redesign'}
                 </span>
                 <span className="text-xs text-purple-300/70 font-medium">
                   {project.client}
@@ -199,7 +197,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
               {project.tools && (
                 <div className="space-y-2">
                   <span className="text-[11px] font-bold text-purple-300/70 uppercase tracking-wider block">
-                    Production & SEO Stack
+                    Production & Tech Stack
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {project.tools.map((tool, i) => (

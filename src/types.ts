@@ -1,10 +1,9 @@
-export type ServiceType = 'video-editing' | 'website-redesign' | 'google-visibility';
+export type ServiceType = 'video-editing' | 'website-redesign';
 
 export type VideoCategory = 'Viral Short / Reel' | 'Cinematic Commercial' | 'YouTube Longform' | '3D Motion Graphics' | 'SaaS Explainer';
 export type WebCategory = 'SaaS Platform' | 'Luxury E-Commerce' | 'AI / Tech Landing' | 'Creative Studio' | 'Fintech Web App';
-export type SeoCategory = 'Local Google Maps (GMB)' | 'SaaS Organic Dominance' | 'E-Commerce Google Search' | 'Technical SEO & Core Web Vitals' | 'High-Intent Keywords';
 
-export type ProjectCategory = VideoCategory | WebCategory | SeoCategory;
+export type ProjectCategory = VideoCategory | WebCategory;
 
 export interface MetricItem {
   label: string;
@@ -37,18 +36,11 @@ export interface ClientReview {
   rating: number;
 }
 
-export interface KeywordRankingItem {
-  keyword: string;
-  beforeRank: number | string;
-  afterRank: number | string;
-  searchVolume: string;
-}
-
 export interface PortfolioProject {
   id: string;
   title: string;
   tagline: string;
-  service: 'video-editing' | 'website-redesign' | 'google-visibility';
+  service: 'video-editing' | 'website-redesign';
   category: ProjectCategory;
   client: string;
   clientIndustry: string;
@@ -89,24 +81,10 @@ export interface PortfolioProject {
   keyImprovements?: string[];
   techStack?: string[];
   figmaUrl?: string;
-
-  // Google Visibility-specific properties
-  keywordRankings?: KeywordRankingItem[];
-  organicClicks?: string;
-  topRankingsCount?: string;
-  serpSnippetPreview?: {
-    displayUrl: string;
-    headline: string;
-    description: string;
-    sitelinks?: string[];
-    richRating?: string;
-    verified?: boolean;
-  };
-  mapPackRank?: string;
 }
 
 export interface AgencyService {
-  id: 'video-editing' | 'website-redesign' | 'google-visibility';
+  id: 'video-editing' | 'website-redesign';
   name: string;
   tagline: string;
   description: string;
@@ -135,7 +113,7 @@ export interface AgencyService {
 export interface InquiryFormData {
   name: string;
   email: string;
-  service: 'video-editing' | 'website-redesign' | 'google-visibility' | 'all-inclusive';
+  service: 'video-editing' | 'website-redesign' | 'all-inclusive';
   budget: string;
   projectDetails: string;
   timeline: string;

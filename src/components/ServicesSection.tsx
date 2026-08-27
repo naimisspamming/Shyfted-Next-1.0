@@ -16,43 +16,31 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry 
   const activeService = AGENCY_SERVICES.find((s) => s.id === selectedServiceId) || AGENCY_SERVICES[0];
 
   return (
-    <div className="space-y-8 max-w-4xl mx-auto">
-      {/* Service Switcher Pill */}
-      <BlurReveal delay={0.05} className="flex justify-center">
-        <CategoryTabs
-          activeCategory={selectedServiceId}
-          onChange={setSelectedServiceId}
-          idPrefix="service-tab"
-        />
-      </BlurReveal>
+    <div className="space-y-8">
+      {/* Centered Header & Category Switcher */}
+      <BlurReveal blurAmount={20} yOffset={24} duration={0.8}>
+        <div className="text-center space-y-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Services & Transparent Rates</h2>
 
-      {/* Overview with smooth blur switch */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={selectedServiceId}
-          initial={{ opacity: 0, filter: 'blur(6px)', y: 8 }}
-          animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
-          exit={{ opacity: 0, filter: 'blur(6px)', y: -8 }}
-          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center max-w-xl mx-auto space-y-1.5 transform-gpu"
-        >
-          <h3 className="text-xl font-bold text-white tracking-tight">
-            {activeService.name}
-          </h3>
-          <p className="text-xs sm:text-sm text-purple-200/70 leading-relaxed">
-            {activeService.description}
-          </p>
-        </motion.div>
-      </AnimatePresence>
+          <div className="flex justify-center">
+            <CategoryTabs
+              activeCategory={selectedServiceId}
+              onChange={setSelectedServiceId}
+              variant="services"
+              idPrefix="service-tab"
+            />
+          </div>
+        </div>
+      </BlurReveal>
 
       {/* Pricing Tiers Grid with step-by-step blur reveals */}
       <AnimatePresence mode="wait">
         <motion.div
           key={`grid-${selectedServiceId}`}
-          initial={{ opacity: 0, filter: 'blur(8px)', y: 10 }}
+          initial={{ opacity: 0, filter: 'blur(22px)', y: 22 }}
           animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
-          exit={{ opacity: 0, filter: 'blur(8px)', y: -10 }}
-          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          exit={{ opacity: 0, filter: 'blur(22px)', y: -22 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="grid grid-cols-1 md:grid-cols-3 gap-4 transform-gpu"
         >
           {activeService.packages.map((pkg, idx) => (

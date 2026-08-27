@@ -18,11 +18,11 @@ export const BlurReveal: React.FC<BlurRevealProps> = ({
   children,
   className = '',
   delay = 0,
-  duration = 0.45,
-  blurAmount = 8,
-  yOffset = 14,
-  scaleOffset = 0.99,
-  amount = 0.05,
+  duration = 0.85,
+  blurAmount = 24,
+  yOffset = 28,
+  scaleOffset = 0.97,
+  amount = 0.15,
   once = true,
   id,
   style,
@@ -46,12 +46,12 @@ export const BlurReveal: React.FC<BlurRevealProps> = ({
       viewport={{
         once,
         amount,
-        margin: '50px 0px -20px 0px',
+        margin: '0px 0px -40px 0px',
       }}
       transition={{
         duration,
         delay,
-        ease: [0.22, 1, 0.36, 1], // Silky smooth cubic bezier (snappy and fluid)
+        ease: [0.16, 1, 0.3, 1], // Cinematic apple-grade curve with lingering deceleration
       }}
       style={{
         willChange: 'transform, opacity, filter',
