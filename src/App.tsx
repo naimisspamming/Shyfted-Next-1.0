@@ -67,7 +67,7 @@ export default function App() {
             <iframe
               src="https://www.youtube-nocookie.com/embed/fbSaIHpeP-c?autoplay=1&mute=1&loop=1&playlist=fbSaIHpeP-c&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&playsinline=1&enablejsapi=1&fs=0&autohide=1"
               title="Hero Background Video"
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300vw] h-[168.75vw] min-w-[177.77vh] min-h-[100vh] max-w-none max-h-none pointer-events-none opacity-60 border-0 outline-none select-none scale-125 transition-opacity duration-1000"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300vw] h-[168.75vw] min-w-[177.77vh] min-h-[100vh] max-w-none max-h-none pointer-events-none opacity-60 border-0 outline-none select-none scale-125 transition-opacity duration-1000 grayscale contrast-125 saturate-0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               tabIndex={-1}
             />
@@ -162,9 +162,6 @@ export default function App() {
 
       {/* Main Content */}
       <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 md:py-16 flex flex-col gap-12 sm:gap-16">
-
-        {/* SECTION DIVIDER */}
-        <SectionDivider />
 
         {/* WORK SECTION */}
         <section id="work" className="space-y-8 scroll-mt-24">
