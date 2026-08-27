@@ -1,0 +1,6 @@
+{
+  "name": "Shyfted Next",
+  "description": "Minimalist, sleek studio showcase app for Shyfted Next, featuring high-retention video editing, modern website redesign, and Google visibility & organic search dominance portfolios.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
