@@ -28,7 +28,7 @@ function AppContent() {
     const timer = setTimeout(() => {
       setFading(true);
       setTimeout(() => setLoading(false), 500);
-    }, 6000);
+    }, 8000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -59,7 +59,7 @@ function AppContent() {
     <div className="min-h-screen bg-[#07010e] bg-purple-ambient text-purple-50 flex flex-col selection:bg-purple-500 selection:text-white font-sans">
       {loading && (
         <div className={`fixed inset-0 z-50 flex items-center justify-center bg-[#07010e] transition-opacity duration-500 ease-out ${fading ? 'opacity-0' : 'opacity-100'}`}>
-          <CirclePreloader duration={6000} />
+          <CirclePreloader duration={8000} />
         </div>
       )}
       
