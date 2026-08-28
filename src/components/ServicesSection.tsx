@@ -20,7 +20,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry 
       {/* Centered Header & Category Switcher */}
       <BlurReveal blurAmount={20} yOffset={24} duration={0.8}>
         <div className="text-center space-y-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Services & Transparent Rates</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Solutions</h2>
 
           <div className="flex justify-center">
             <CategoryTabs

@@ -501,6 +501,14 @@ export const CLIENT_LOGOS = [
   'Alex Rivera Media',
 ];
 
+export const CLIENT_LOGOS_URLS = [
+  'https://publicpool.co/cdn/shop/files/Logo.png',
+  'https://i.postimg.cc/vB1KT4qx/IMG-6296.png',
+  'https://i.postimg.cc/gJw7jxSh/IMG-6297.png',
+  'https://i.postimg.cc/Ls4xRBq0/1000057785-removebg-preview.png',
+  'https://djtaba.com/wp-content/uploads/2026/02/DJTaba-Logo3.png',
+];
+
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: 'naimur-rahman',

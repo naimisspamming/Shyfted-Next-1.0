@@ -8,7 +8,7 @@ import { SectionDivider } from '../components/SectionDivider';
 import { ClientMarquee } from '../components/ClientMarquee';
 import { BlurReveal } from '../components/BlurReveal';
 import { motion, AnimatePresence } from 'motion/react';
-import { Send, ChevronDown } from 'lucide-react';
+import { Send, ChevronDown, Lightbulb, Briefcase } from 'lucide-react';
 
 const BeforeAfterSlider = React.lazy(() => import('../components/BeforeAfterSlider').then(m => ({ default: m.BeforeAfterSlider })));
 const ServicesSection = React.lazy(() => import('../components/ServicesSection').then(m => ({ default: m.ServicesSection })));
@@ -85,11 +85,13 @@ export function HomePage({ handleScrollTo, handleOpenInquiry, setSelectedProject
 
           <BlurReveal delay={0.38} duration={0.8} blurAmount={18} yOffset={20}>
             <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 pt-2 w-full max-w-full mx-auto px-2">
-              <button onClick={() => handleScrollTo('work')} className="whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-white text-purple-950 hover:bg-purple-50 font-bold text-xs transition-all shadow-lg shadow-purple-950/40 active:scale-95 cursor-pointer">
-                Selected Work
+              <button onClick={() => handleScrollTo('services')} className="whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-white text-purple-950 hover:bg-purple-50 font-bold text-xs transition-all shadow-lg shadow-purple-950/40 active:scale-95 cursor-pointer flex items-center gap-1.5">
+                <Lightbulb className="w-3.5 h-3.5" />
+                Solutions
               </button>
-              <button onClick={() => handleOpenInquiry('all-inclusive')} className="whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/25 text-purple-200 hover:text-white font-semibold text-xs transition-all cursor-pointer">
-                Apply for Next Sprint
+              <button onClick={() => handleScrollTo('work')} className="whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/25 text-purple-200 hover:text-white font-semibold text-xs transition-all cursor-pointer flex items-center gap-1.5">
+                <Briefcase className="w-3.5 h-3.5" />
+                Selected Work
               </button>
             </div>
           </BlurReveal>
