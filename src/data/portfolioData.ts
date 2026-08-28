@@ -1,4 +1,4 @@
-import { PortfolioProject, AgencyService } from '../types';
+import { PortfolioProject, AgencyService, TeamMember } from '../types';
 
 export const AGENCY_SERVICES: AgencyService[] = [
   {
@@ -499,4 +499,17 @@ export const CLIENT_LOGOS = [
   'Solaris AI',
   'Maison Noire',
   'Alex Rivera Media',
+];
+
+export const TEAM_MEMBERS: TeamMember[] = [
+  {
+    id: 'naimur-rahman',
+    name: 'Naimur Rahman',
+    role: 'Managing Director',
+    bio: 'Naimur is a visionary strategist and Managing Director with a passion for scaling brands through high-retention storytelling and conversion-first web experiences.',
+    avatar: 'https://i.pravatar.cc/300?u=naimur',
+    socials: {
+      linkedin: 'https://linkedin.com/in/naimur-rahman',
+    },
+  },
 ];

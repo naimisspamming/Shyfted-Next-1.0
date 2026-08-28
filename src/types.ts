@@ -1,3 +1,16 @@
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  avatar: string;
+  socials?: {
+    twitter?: string;
+    linkedin?: string;
+    portfolio?: string;
+  };
+}
+
 export type ServiceType = 'video-editing' | 'website-redesign';
 
 export type VideoCategory = 'Viral Short / Reel' | 'Cinematic Commercial' | 'YouTube Longform' | '3D Motion Graphics' | 'SaaS Explainer';
