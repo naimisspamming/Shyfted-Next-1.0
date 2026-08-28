@@ -60,6 +60,8 @@ export const VideoPlayerCard: React.FC<VideoPlayerCardProps> = ({
           <img
             src={project.coverImage}
             alt={project.title}
+            width="1600"
+            height="900"
             className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
           />
         )}

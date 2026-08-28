@@ -120,9 +120,9 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ initialCategory 
       <AnimatePresence mode="wait">
         <motion.div
           key={activeCategory}
-          initial={{ opacity: 0, filter: 'blur(16px)', y: 14 }}
-          animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
-          exit={{ opacity: 0, filter: 'blur(16px)', y: -14 }}
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -14 }}
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 transform-gpu"
         >

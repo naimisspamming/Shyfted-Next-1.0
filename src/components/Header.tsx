@@ -75,9 +75,9 @@ export const Header: React.FC<HeaderProps> = ({
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={ROTATING_TEXTS[textIndex]}
-                    initial={{ opacity: 0, filter: 'blur(6px)', scale: 0.98 }}
-                    animate={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}
-                    exit={{ opacity: 0, filter: 'blur(6px)', scale: 1.02 }}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.02 }}
                     transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
                     className="whitespace-nowrap absolute inset-0 flex items-center justify-center text-center font-bold text-[11px] sm:text-xs text-purple-950 tracking-tight"
                   >

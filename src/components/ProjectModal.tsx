@@ -35,9 +35,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
           onClick={onClose}
         >
           <motion.div
-            initial={{ opacity: 0, filter: 'blur(8px)', scale: 0.97, y: 15 }}
-            animate={{ opacity: 1, filter: 'blur(0px)', scale: 1, y: 0 }}
-            exit={{ opacity: 0, filter: 'blur(8px)', scale: 0.97, y: 15 }}
+            initial={{ opacity: 0, scale: 0.97, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.97, y: 15 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="relative w-full max-w-lg max-h-[92vh] flex flex-col bg-[#0f041e]/95 border-t sm:border border-purple-500/20 rounded-t-3xl sm:rounded-[32px] shadow-2xl backdrop-blur-xl overflow-hidden transform-gpu"
             onClick={(e) => e.stopPropagation()}
@@ -83,6 +83,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                     <img
                       src={project.afterImage}
                       alt="Redesigned UI"
+                      width="1600"
+                      height="900"
                       className="w-full max-h-[300px] object-cover"
                     />
                     <span className="absolute bottom-2 right-2 px-2.5 py-0.5 rounded bg-purple-950/80 border border-purple-400/30 text-[9px] font-bold text-white uppercase">
@@ -93,6 +95,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                   <img
                     src={project.coverImage}
                     alt={project.title}
+                    width="1600"
+                    height="900"
                     className="w-full max-h-[260px] object-cover"
                   />
                 )}

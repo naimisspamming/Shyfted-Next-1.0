@@ -1,20 +1,22 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, Suspense } from 'react';
 import { PORTFOLIO_PROJECTS, AGENCY_STATS, CLIENT_LOGOS } from './data/portfolioData';
 import { PortfolioProject, ServiceType } from './types';
 import { Header } from './components/Header';
 import { VideoPlayerCard } from './components/VideoPlayerCard';
-import { BeforeAfterSlider } from './components/BeforeAfterSlider';
-import { ServicesSection } from './components/ServicesSection';
-import { ProcessSection } from './components/ProcessSection';
+import { YoutubeFacade } from './components/YoutubeFacade';
 import { CategoryTabs } from './components/CategoryTabs';
 import { SectionDivider } from './components/SectionDivider';
-import { ProjectModal } from './components/ProjectModal';
-import { ContactDrawer } from './components/ContactDrawer';
 import { ClientMarquee } from './components/ClientMarquee';
 import { ShyftedLogo } from './components/Logo';
 import { BlurReveal } from './components/BlurReveal';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, ChevronDown } from 'lucide-react';
+
+const BeforeAfterSlider = React.lazy(() => import('./components/BeforeAfterSlider').then(m => ({ default: m.BeforeAfterSlider })));
+const ServicesSection = React.lazy(() => import('./components/ServicesSection').then(m => ({ default: m.ServicesSection })));
+const ProcessSection = React.lazy(() => import('./components/ProcessSection').then(m => ({ default: m.ProcessSection })));
+const ProjectModal = React.lazy(() => import('./components/ProjectModal').then(m => ({ default: m.ProjectModal })));
+const ContactDrawer = React.lazy(() => import('./components/ContactDrawer').then(m => ({ default: m.ContactDrawer })));
 
 export default function App() {
   const [serviceFilter, setServiceFilter] = useState<ServiceType>('video-editing');
@@ -64,12 +66,11 @@ export default function App() {
         {/* Background YouTube Video with smooth vertical feathering (higher at top, fading down to 10% at bottom) */}
         <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden select-none z-0">
           <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/fbSaIHpeP-c?autoplay=1&mute=1&loop=1&playlist=fbSaIHpeP-c&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&playsinline=1&enablejsapi=1&fs=0&autohide=1"
+            <YoutubeFacade
+              videoId="fbSaIHpeP-c"
               title="Hero Background Video"
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300vw] h-[200vw] min-w-[200vh] min-h-[120vh] max-w-none max-h-none pointer-events-none opacity-60 border-0 outline-none select-none scale-125 transition-opacity duration-1000 grayscale contrast-125 saturate-0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              tabIndex={-1}
+              autoPlay={true}
             />
             {/* Transparent overlay to completely block interaction with the iframe */}
             <div className="absolute inset-0 w-full h-full z-10" />
@@ -188,13 +189,13 @@ export default function App() {
           <AnimatePresence mode="wait">
             <motion.div
               key={serviceFilter}
-              initial={{ opacity: 0, filter: 'blur(20px)', y: 24 }}
-              animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
-              exit={{ opacity: 0, filter: 'blur(20px)', y: -24 }}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -24 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               className="grid grid-cols-1 md:grid-cols-2 gap-6 transform-gpu"
             >
-              {filteredProjects.map((project, index) => (
+               {filteredProjects.map((project, index) => (
                 <BlurReveal
                   key={project.id}
                   delay={index * 0.12}
@@ -203,19 +204,21 @@ export default function App() {
                   yOffset={28}
                   amount={0.1}
                 >
-                  {project.service === 'video-editing' ? (
-                    <VideoPlayerCard
-                      project={project}
-                      onSelectProject={setSelectedProject}
-                      onOpenInquiry={handleOpenInquiry}
-                    />
-                  ) : (
-                    <BeforeAfterSlider
-                      project={project}
-                      onSelectProject={setSelectedProject}
-                      onOpenInquiry={handleOpenInquiry}
-                    />
-                  )}
+                  <Suspense fallback={<div className="aspect-video rounded-2xl bg-purple-950/20 animate-pulse" />}>
+                    {project.service === 'video-editing' ? (
+                      <VideoPlayerCard
+                        project={project}
+                        onSelectProject={setSelectedProject}
+                        onOpenInquiry={handleOpenInquiry}
+                      />
+                    ) : (
+                      <BeforeAfterSlider
+                        project={project}
+                        onSelectProject={setSelectedProject}
+                        onOpenInquiry={handleOpenInquiry}
+                      />
+                    )}
+                  </Suspense>
                 </BlurReveal>
               ))}
             </motion.div>
@@ -227,14 +230,18 @@ export default function App() {
 
         {/* SERVICES SECTION */}
         <section id="services" className="space-y-8 scroll-mt-24">
-          <ServicesSection onOpenInquiry={handleOpenInquiry} />
+          <Suspense fallback={<div className="h-[400px] w-full rounded-2xl bg-purple-950/20 animate-pulse" />}>
+            <ServicesSection onOpenInquiry={handleOpenInquiry} />
+          </Suspense>
         </section>
 
         {/* SECTION DIVIDER */}
         <SectionDivider />
 
         {/* PROCESS SECTION (Category-Specific) */}
-        <ProcessSection initialCategory={serviceFilter} />
+        <Suspense fallback={<div className="h-[400px] w-full rounded-2xl bg-purple-950/20 animate-pulse" />}>
+          <ProcessSection initialCategory={serviceFilter} />
+        </Suspense>
 
         {/* SECTION DIVIDER */}
         <SectionDivider />
@@ -269,8 +276,8 @@ export default function App() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-medium text-purple-200">Service Required</label>
-                <select className="w-full px-3 py-2 rounded-xl bg-[#140628] border border-purple-500/20 text-white text-xs focus:outline-none focus:border-purple-400">
+                <label htmlFor="service-select" className="text-xs font-medium text-purple-200">Service Required</label>
+                <select id="service-select" className="w-full px-3 py-2 rounded-xl bg-[#140628] border border-purple-500/20 text-white text-xs focus:outline-none focus:border-purple-400">
                   <option value="video-editing">Video Editing Sprint</option>
                   <option value="website-redesign">Website Redesign</option>
                   <option value="all-inclusive">All-in-One Growth Bundle</option>
@@ -322,19 +329,23 @@ export default function App() {
       </BlurReveal>
 
       {/* Project Case Study Modal */}
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-        onOpenInquiry={handleOpenInquiry}
-      />
+      <Suspense fallback={null}>
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+          onOpenInquiry={handleOpenInquiry}
+        />
+      </Suspense>
 
       {/* Quick Inquiry Drawer */}
-      <ContactDrawer
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-        initialService={contactInitialService}
-        initialProjectTitle={contactInitialProjectTitle}
-      />
+      <Suspense fallback={null}>
+        <ContactDrawer
+          isOpen={isContactOpen}
+          onClose={() => setIsContactOpen(false)}
+          initialService={contactInitialService}
+          initialProjectTitle={contactInitialProjectTitle}
+        />
+      </Suspense>
     </div>
   );
 }

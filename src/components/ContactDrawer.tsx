@@ -82,9 +82,9 @@ export const ContactDrawer: React.FC<ContactDrawerProps> = ({
           onClick={onClose}
         >
           <motion.div
-            initial={{ opacity: 0, filter: 'blur(8px)', scale: 0.97, y: 15 }}
-            animate={{ opacity: 1, filter: 'blur(0px)', scale: 1, y: 0 }}
-            exit={{ opacity: 0, filter: 'blur(8px)', scale: 0.97, y: 15 }}
+            initial={{ opacity: 0, scale: 0.97, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.97, y: 15 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="relative w-full max-w-lg max-h-[92vh] flex flex-col bg-[#0f041e]/95 border-t sm:border border-purple-500/20 rounded-t-3xl sm:rounded-[32px] shadow-2xl backdrop-blur-xl overflow-hidden transform-gpu"
             onClick={(e) => e.stopPropagation()}
@@ -246,8 +246,9 @@ export const ContactDrawer: React.FC<ContactDrawerProps> = ({
 
                   {/* Budget Range */}
                   <div className="space-y-1.5">
-                    <label className="text-[11px] font-medium text-purple-200">Estimated Budget Range</label>
+                    <label htmlFor="budget-select" className="text-[11px] font-medium text-purple-200">Estimated Budget Range</label>
                     <select
+                      id="budget-select"
                       value={formData.budget}
                       onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                       className="w-full px-3 py-2 rounded-xl bg-[#140628] border border-purple-500/20 text-white text-xs focus:outline-none focus:border-purple-400"

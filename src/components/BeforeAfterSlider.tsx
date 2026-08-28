@@ -21,10 +21,14 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
 
   const handleMove = useCallback((clientX: number) => {
     if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const position = (x / rect.width) * 100;
-    setSliderPosition(Math.max(0, Math.min(100, position)));
+    
+    requestAnimationFrame(() => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = clientX - rect.left;
+      const position = (x / rect.width) * 100;
+      setSliderPosition(Math.max(0, Math.min(100, position)));
+    });
   }, []);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
@@ -68,6 +72,8 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
             <img
               src={afterImage}
               alt="Redesign"
+              width="1600"
+              height="900"
               className="w-full h-full object-cover"
             />
             <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-purple-950/80 backdrop-blur-md border border-purple-400/30 text-[9px] font-bold text-white uppercase tracking-wider">
@@ -83,6 +89,8 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
             <img
               src={beforeImage}
               alt="Before redesign"
+              width="1600"
+              height="900"
               className="absolute inset-0 w-full h-full object-cover grayscale-[30%]"
               style={{
                 width: containerRef.current ? `${containerRef.current.clientWidth}px` : '100%',

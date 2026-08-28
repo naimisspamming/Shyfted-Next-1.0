@@ -30,9 +30,12 @@ export const ShyftedLogo: React.FC<LogoProps> = ({
     <img
       src={LOGO_URL}
       alt="Shyfted Next Logo"
+      width={currentSize.imgHeight * 3.75} // Approximate aspect ratio
+      height={currentSize.imgHeight}
       className={`${currentSize.height} w-auto object-contain select-none filter drop-shadow-[0_2px_16px_rgba(168,85,247,0.35)] transition-transform duration-200`}
       referrerPolicy="no-referrer"
       loading="eager"
+      fetchPriority="high"
     />
   );
 
