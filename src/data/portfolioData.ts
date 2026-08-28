@@ -506,8 +506,15 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: 'naimur-rahman',
     name: 'Naimur Rahman',
     role: 'Managing Director',
+    email: 'naimur@shyftednext.com',
+    ventures: [
+      { name: 'Kochu', description: 'Clothing brand' }
+    ],
+    institutions: [
+      { name: 'North South University', description: 'University' }
+    ],
     bio: 'Naimur is a visionary strategist and Managing Director with a passion for scaling brands through high-retention storytelling and conversion-first web experiences.',
-    avatar: 'https://i.pravatar.cc/300?u=naimur',
+    avatar: 'https://i.ibb.co.com/Fk1NVDNC/3835.webp',
     socials: {
       linkedin: 'https://linkedin.com/in/naimur-rahman',
     },

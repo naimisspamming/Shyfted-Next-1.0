@@ -4,6 +4,9 @@ export interface TeamMember {
   role: string;
   bio: string;
   avatar: string;
+  email?: string;
+  ventures?: { name: string; description: string }[];
+  institutions?: { name: string; description: string }[];
   socials?: {
     twitter?: string;
     linkedin?: string;

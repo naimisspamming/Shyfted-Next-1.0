@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TEAM_MEMBERS } from '../data/portfolioData';
 import { TeamMember } from '../types';
 import { BlurReveal } from '../components/BlurReveal';
@@ -6,6 +7,7 @@ import { Linkedin } from 'lucide-react';
 
 export function TeamPage() {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+  const navigate = useNavigate();
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-20">
@@ -21,15 +23,25 @@ export function TeamPage() {
                 <BlurReveal key={member.id} blurAmount={20} yOffset={24} duration={0.8}>
                     <div 
                         className="p-8 rounded-3xl bg-[#0f041e]/90 border border-purple-500/15 shadow-xl shadow-purple-950/30 cursor-pointer hover:border-purple-500/30 transition-all flex flex-col items-center"
-                        onClick={() => setSelectedMember(member)}
+                        onClick={() => member.id === 'naimur-rahman' ? navigate('/naimur') : setSelectedMember(member)}
                     >
                         <img src={member.avatar} alt={member.name} className="w-32 h-32 rounded-full mb-6 border-4 border-purple-500/20" />
                         <h3 className="text-xl font-bold text-white text-center">{member.name}</h3>
                         <p className="text-purple-400 font-semibold mb-6">{member.role}</p>
                         <p className="text-purple-200/70 text-sm leading-relaxed text-center flex-grow">{member.bio.substring(0, 100)}...</p>
+                        <button className="mt-4 text-purple-300 font-medium hover:text-white transition-colors">
+                            {member.id === 'naimur-rahman' ? 'View Bio' : 'Read More'}
+                        </button>
                     </div>
                 </BlurReveal>
             ))}
+        </div>
+        
+        {/* Footer Link Section */}
+        <div className="mt-20 pt-10 border-t border-purple-500/10 text-center">
+            <button onClick={() => navigate('/naimur')} className="text-purple-300 hover:text-white transition-colors font-medium">
+                Visit Naimur Rahman's Portfolio Bio Page
+            </button>
         </div>
 
         {selectedMember && (
