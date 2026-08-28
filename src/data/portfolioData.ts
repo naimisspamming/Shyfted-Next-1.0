@@ -508,7 +508,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: 'Managing Director',
     email: 'naimur@shyftednext.com',
     ventures: [
-      { name: 'Kochu', description: 'Clothing brand' }
+      { name: 'Kochu', description: 'Clothing brand' },
+      { name: 'Shyfted Next', description: 'Agency' }
     ],
     institutions: [
       { name: 'North South University', description: 'University' }
@@ -517,6 +518,62 @@ export const TEAM_MEMBERS: TeamMember[] = [
     avatar: 'https://i.ibb.co.com/Fk1NVDNC/3835.webp',
     socials: {
       linkedin: 'https://linkedin.com/in/naimur-rahman',
+    },
+  },
+  {
+    id: 'mohaddes-ali-tuhin',
+    name: 'Mohaddes Ali Tuhin',
+    role: 'Chief Operating Officer',
+    email: 'mohaddes@shyftednext.com',
+    avatar: 'https://i.ibb.co.com/MkD2B86G/file-000000004b00820bbb73b7e474ace64a.webp',
+    bio: 'Mohaddes Ali Tuhin is a seasoned Chief Operating Officer focused on operational excellence, scaling infrastructure, and driving seamless business processes.',
+    institutions: [
+      { name: 'Joypurhat govt. College', description: 'College' }
+    ],
+    socials: {
+      linkedin: 'https://linkedin.com/in/mohaddes-ali-tuhin',
+    },
+  },
+  {
+    id: 'raiyan-karim',
+    name: 'Raiyan Karim',
+    role: 'Outreach Executive',
+    email: 'raiyan@shyftednext.com',
+    avatar: 'https://i.ibb.co.com/YBKyFXPC/Neon-Yellow-and-Blue-Modern-Whatsapp-DP-20260828-224130-0000.webp',
+    bio: 'Raiyan Karim is a proactive Outreach Executive focused on connecting brands with their ideal audience and fostering strategic growth partnerships.',
+    institutions: [
+      { name: 'Joypurhat govt. College', description: 'College' }
+    ],
+    socials: {
+      linkedin: 'https://linkedin.com/in/raiyan-karim',
+    },
+  },
+  {
+    id: 'abdullah-al-noman',
+    name: 'Abdullah Al Noman',
+    role: 'Outreach Executive',
+    email: 'noman@shyftednext.com',
+    avatar: 'https://i.ibb.co.com/dsPXSNS7/Neon-Yellow-and-Blue-Modern-Whatsapp-DP-20260828-222251-0000.webp',
+    bio: 'Abdullah Al Noman is a dynamic Outreach Executive dedicated to building strategic connections and driving outreach excellence.',
+    institutions: [
+      { name: 'University of People', description: 'University' }
+    ],
+    socials: {
+      linkedin: 'https://linkedin.com/in/abdullah-al-noman',
+    },
+  },
+  {
+    id: 'syed-rabby-hasan',
+    name: 'Syed Rabby Hasan',
+    role: 'Telesales Executive',
+    email: 'rabby@shyftednext.com',
+    avatar: 'https://i.ibb.co.com/vvwV5rFY/Neon-Yellow-and-Blue-Modern-Whatsapp-DP-20260828-223011-0000.webp',
+    bio: 'Syed Rabby Hasan is a driven Telesales Executive committed to accelerating growth and nurturing valuable client relationships.',
+    institutions: [
+      { name: 'AHM Kamaruzzaman College', description: 'College' }
+    ],
+    socials: {
+      linkedin: 'https://linkedin.com/in/syed-rabby-hasan',
     },
   },
 ];

@@ -13,37 +13,24 @@ export function TeamPage() {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-20">
         <BlurReveal blurAmount={20} yOffset={24} duration={0.8}>
             <div className="text-center space-y-4 mb-16">
-                <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">Our Leadership Team</h1>
-                <p className="text-purple-300/60 max-w-lg mx-auto">Meet the visionaries driving our creative excellence.</p>
+                <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">Our Team</h1>
             </div>
         </BlurReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {TEAM_MEMBERS.map((member) => (
                 <BlurReveal key={member.id} blurAmount={20} yOffset={24} duration={0.8}>
-                    <div 
+                        <div 
                         className="p-8 rounded-3xl bg-[#0f041e]/90 border border-purple-500/15 shadow-xl shadow-purple-950/30 cursor-pointer hover:border-purple-500/30 transition-all flex flex-col items-center"
-                        onClick={() => member.id === 'naimur-rahman' ? navigate('/naimur') : setSelectedMember(member)}
+                        onClick={() => member.id === 'naimur-rahman' ? navigate('/naimur') : (member.id === 'mohaddes-ali-tuhin' ? navigate('/mohaddes') : (member.id === 'raiyan-karim' ? navigate('/raiyan') : (member.id === 'abdullah-al-noman' ? navigate('/noman') : (member.id === 'syed-rabby-hasan' ? navigate('/rabby') : setSelectedMember(member)))))}
                     >
                         <img src={member.avatar} alt={member.name} className="w-32 h-32 rounded-full mb-6 border-4 border-purple-500/20" />
                         <h3 className="text-xl font-bold text-white text-center">{member.name}</h3>
                         <p className="text-purple-400 font-semibold mb-6">{member.role}</p>
-                        <p className="text-purple-200/70 text-sm leading-relaxed text-center flex-grow">{member.bio.substring(0, 100)}...</p>
-                        <button className="mt-4 text-purple-300 font-medium hover:text-white transition-colors">
-                            {member.id === 'naimur-rahman' ? 'View Bio' : 'Read More'}
-                        </button>
                     </div>
                 </BlurReveal>
             ))}
         </div>
-        
-        {/* Footer Link Section */}
-        <div className="mt-20 pt-10 border-t border-purple-500/10 text-center">
-            <button onClick={() => navigate('/naimur')} className="text-purple-300 hover:text-white transition-colors font-medium">
-                Visit Naimur Rahman's Portfolio Bio Page
-            </button>
-        </div>
-
         {selectedMember && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-purple-950/90 backdrop-blur-md" onClick={() => setSelectedMember(null)}>
                 <div className="bg-[#0f041e] border border-purple-500/20 p-10 rounded-3xl max-w-lg w-full shadow-2xl" onClick={e => e.stopPropagation()}>
