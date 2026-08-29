@@ -11,27 +11,16 @@ import { MohaddesBioPage } from './pages/MohaddesBioPage';
 import { RaiyanBioPage } from './pages/RaiyanBioPage';
 import { NomanBioPage } from './pages/NomanBioPage';
 import { RabbyBioPage } from './pages/RabbyBioPage';
-import { CirclePreloader } from './components/CirclePreloader';
 import { ProjectModal } from './components/ProjectModal';
 import { ContactDrawer } from './components/ContactDrawer';
 import { PortfolioProject } from './types';
 
 function AppContent() {
-  const [loading, setLoading] = useState(true);
-  const [fading, setFading] = useState(false);
   const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [contactInitialService, setContactInitialService] = useState<string>('video-editing');
   const [contactInitialProjectTitle, setContactInitialProjectTitle] = useState<string | undefined>();
   
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setFading(true);
-      setTimeout(() => setLoading(false), 500);
-    }, 8000);
-    return () => clearTimeout(timer);
-  }, []);
-
   const navigate = useNavigate();
   const location = useLocation();
   const isBioPage = location.pathname !== '/' && location.pathname !== '/team';
@@ -57,11 +46,6 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-[#07010e] bg-purple-ambient text-purple-50 flex flex-col selection:bg-purple-500 selection:text-white font-sans">
-      {loading && (
-        <div className={`fixed inset-0 z-50 flex items-center justify-center bg-[#07010e] transition-opacity duration-500 ease-out ${fading ? 'opacity-0' : 'opacity-100'}`}>
-          <CirclePreloader duration={8000} />
-        </div>
-      )}
       
       {!isBioPage && (
         <Header

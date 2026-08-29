@@ -112,70 +112,42 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 </p>
               </div>
 
-              {/* Key Metrics / Proof */}
-              {project.metrics && project.metrics.length > 0 && (
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                  {project.metrics.map((st, i) => (
-                    <div
-                      key={i}
-                      className="p-3 rounded-xl bg-purple-950/40 border border-purple-500/20 text-center"
-                    >
-                      <div className="text-base sm:text-lg font-black text-purple-200">
-                        {st.value}
-                      </div>
-                      <div className="text-[10px] text-purple-300/70 uppercase tracking-wider font-semibold">
-                        {st.label}
-                      </div>
+              {/* Only show detailed case study if not a website redesign */}
+              {project.service !== 'website-redesign' && (
+                <>
+                  {/* Key Metrics / Proof */}
+                  {project.metrics && project.metrics.length > 0 && (
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                      {project.metrics.map((st, i) => (
+                        <div
+                          key={i}
+                          className="p-3 rounded-xl bg-purple-950/40 border border-purple-500/20 text-center"
+                        >
+                          <div className="text-base sm:text-lg font-black text-purple-200">
+                            {st.value}
+                          </div>
+                          <div className="text-[10px] text-purple-300/70 uppercase tracking-wider font-semibold">
+                            {st.label}
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              )}
+                  )}
 
-              {/* Google Visibility Keyword Rankings Table (if available) */}
-              {project.keywordRankings && project.keywordRankings.length > 0 && (
-                <div className="p-4 rounded-2xl bg-purple-950/40 border border-purple-500/20 space-y-2.5">
-                  <div className="flex items-center justify-between text-xs font-bold text-white">
-                    <span className="flex items-center gap-1.5 text-purple-300">
-                      <Sparkles className="w-3.5 h-3.5 text-purple-400" />
-                      <span>Targeted Keyword Search Rank Gains</span>
-                    </span>
-                    <span className="text-[10px] text-emerald-400 font-mono">SERP Shift</span>
-                  </div>
-                  <div className="space-y-1.5">
-                    {project.keywordRankings.map((kw, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center justify-between p-2.5 rounded-xl bg-black/40 border border-purple-500/10 text-xs"
-                      >
-                        <div>
-                          <div className="font-semibold text-white">{kw.keyword}</div>
-                          <div className="text-[10px] text-purple-300/60 font-mono">{kw.searchVolume} search vol/mo</div>
-                        </div>
-                        <div className="flex items-center gap-2 font-mono">
-                          <span className="text-purple-400/50 line-through">#{kw.beforeRank}</span>
-                          <span className="text-purple-400">→</span>
-                          <span className="px-2 py-0.5 rounded bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 font-bold">
-                            #{kw.afterRank}
-                          </span>
-                        </div>
+                  {/* Problem & Transformation */}
+                  <div className="space-y-3">
+                    <div className="p-4 rounded-2xl bg-purple-950/30 border border-purple-500/15 space-y-2">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-purple-300">
+                        <TrendingUp className="w-3.5 h-3.5 text-purple-400" />
+                        <span>The Challenge & Transformation</span>
                       </div>
-                    ))}
+                      <p className="text-xs text-purple-100/90 leading-relaxed">
+                        {project.summary || project.solution}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </>
               )}
-
-              {/* Problem & Transformation */}
-              <div className="space-y-3">
-                <div className="p-4 rounded-2xl bg-purple-950/30 border border-purple-500/15 space-y-2">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-purple-300">
-                    <TrendingUp className="w-3.5 h-3.5 text-purple-400" />
-                    <span>The Challenge & Transformation</span>
-                  </div>
-                  <p className="text-xs text-purple-100/90 leading-relaxed">
-                    {project.summary || project.solution}
-                  </p>
-                </div>
-              </div>
 
               {/* Project Deliverables Breakdown */}
               {project.deliverables && (
@@ -255,23 +227,36 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
             <div className="p-4 bg-purple-950/60 border-t border-purple-500/20 flex items-center justify-between gap-3">
               <div className="hidden sm:block">
                 <span className="text-[10px] text-purple-300/70 uppercase tracking-wider block font-semibold">
-                  Ready for similar impact?
+                  {project.websiteUrl ? 'View Project Live' : 'Ready for similar impact?'}
                 </span>
                 <span className="text-xs font-bold text-white">
-                  Limited Sprint Availability
+                  {project.websiteUrl ? 'Launch Project Website' : 'Limited Sprint Availability'}
                 </span>
               </div>
 
-              <button
-                onClick={() => {
-                  onClose();
-                  onOpenInquiry(project.service, project.title);
-                }}
-                className="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-white text-purple-950 hover:bg-purple-50 font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 active:scale-95 ml-auto"
-              >
-                <span>Request Sprint for Similar Project</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+              <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                {project.websiteUrl && (
+                  <a
+                    href={project.websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-purple-600 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 active:scale-95"
+                  >
+                    <span>Visit Website</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
+                <button
+                  onClick={() => {
+                    onClose();
+                    onOpenInquiry(project.service, project.title);
+                  }}
+                  className={`w-full sm:w-auto py-2.5 px-5 rounded-xl font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 active:scale-95 ${project.websiteUrl ? 'bg-purple-950/60 border border-purple-500/30 text-white' : 'bg-white text-purple-950 hover:bg-purple-50'}`}
+                >
+                  <span>Request Sprint</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
             </div>
           </motion.div>
         </motion.div>

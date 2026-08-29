@@ -10,7 +10,7 @@ import { BlurReveal } from '../components/BlurReveal';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, ChevronDown, Lightbulb, Briefcase } from 'lucide-react';
 
-const BeforeAfterSlider = React.lazy(() => import('../components/BeforeAfterSlider').then(m => ({ default: m.BeforeAfterSlider })));
+const WebsiteCard = React.lazy(() => import('../components/WebsiteCard').then(m => ({ default: m.WebsiteCard })));
 const ServicesSection = React.lazy(() => import('../components/ServicesSection').then(m => ({ default: m.ServicesSection })));
 const ProcessSection = React.lazy(() => import('../components/ProcessSection').then(m => ({ default: m.ProcessSection })));
 
@@ -55,50 +55,54 @@ export function HomePage({ handleScrollTo, handleOpenInquiry, setSelectedProject
           id="hero"
           className="min-h-[calc(100dvh-4rem)] w-full flex flex-col justify-between items-center text-center px-4 sm:px-6 py-6 sm:py-10 max-w-5xl mx-auto relative z-20"
         >
-        <div className="w-full flex-1 flex flex-col justify-center items-center max-w-3xl mx-auto space-y-5 sm:space-y-6">
-          <BlurReveal delay={0.08} blurAmount={20} yOffset={20} duration={0.8}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/70 border border-purple-500/30 text-[11px] sm:text-xs font-semibold text-purple-200 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.15)] max-w-full">
-              <span className="inline-block w-4 h-2.5 rounded-[2px] overflow-hidden shrink-0 shadow-sm border border-white/20 leading-none">
-                <svg viewBox="0 0 20 12" className="w-full h-full block" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="20" height="12" fill="#006a4e" />
-                  <circle cx="9" cy="6" r="4.2" fill="#f42a41" />
-                </svg>
-              </span>
-              <span className="whitespace-nowrap">Based In Dhaka, Serving Globally</span>
-            </div>
-          </BlurReveal>
+        <div className="w-full flex-1 flex flex-col justify-center items-center max-w-3xl mx-auto">
+          {/* Group 1: Intro Content */}
+          <div className="flex flex-col items-center space-y-5 sm:space-y-6">
+            <BlurReveal delay={0.08} blurAmount={20} yOffset={20} duration={0.8}>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/70 border border-purple-500/30 text-[11px] sm:text-xs font-semibold text-purple-200 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.15)] max-w-full">
+                <span className="inline-block w-4 h-2.5 rounded-[2px] overflow-hidden shrink-0 shadow-sm border border-white/20 leading-none">
+                  <svg viewBox="0 0 20 12" className="w-full h-full block" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="20" height="12" fill="#006a4e" />
+                    <circle cx="9" cy="6" r="4.2" fill="#f42a41" />
+                  </svg>
+                </span>
+                <span className="whitespace-nowrap">Based In Dhaka, Serving Globally</span>
+              </div>
+            </BlurReveal>
 
-          <BlurReveal delay={0.18} duration={0.9} blurAmount={24} yOffset={28}>
-            <h1 className="text-[19px] min-[360px]:text-[21px] min-[400px]:text-[24px] min-[480px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.25] sm:leading-[1.12] max-w-none mx-auto">
-              <span className="block whitespace-nowrap">Crafting High-Retention Videos</span>
-              <span className="block whitespace-nowrap mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-white to-purple-300">
-                &amp; High-Converting Websites.
-              </span>
-            </h1>
-          </BlurReveal>
+            <BlurReveal delay={0.18} duration={0.9} blurAmount={24} yOffset={28}>
+              <h1 className="text-[19px] min-[360px]:text-[21px] min-[400px]:text-[24px] min-[480px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.25] sm:leading-[1.12] max-w-none mx-auto">
+                <span className="block whitespace-nowrap">Crafting High-Retention Videos</span>
+                <span className="block whitespace-nowrap mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-white to-purple-300">
+                  &amp; High-Converting Websites.
+                </span>
+              </h1>
+            </BlurReveal>
 
-          <BlurReveal delay={0.28} duration={0.85} blurAmount={20} yOffset={24}>
-            <p className="text-[13px] sm:text-base text-purple-200/80 max-w-sm sm:max-w-xl mx-auto leading-relaxed font-normal px-1 sm:px-0 [text-wrap:balance]">
-              We help ambitious creators, founders, and modern brands turn fleeting attention into devoted audiences and revenue through world-class visual storytelling.
-            </p>
-          </BlurReveal>
+            <BlurReveal delay={0.28} duration={0.85} blurAmount={20} yOffset={24}>
+              <p className="text-[13px] sm:text-base text-purple-200/80 max-w-sm sm:max-w-xl mx-auto leading-relaxed font-normal px-1 sm:px-0 [text-wrap:balance]">
+                We help ambitious creators, founders, and modern brands turn fleeting attention into devoted audiences and revenue through world-class visual storytelling.
+              </p>
+            </BlurReveal>
 
-          <BlurReveal delay={0.38} duration={0.8} blurAmount={18} yOffset={20}>
-            <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 pt-2 w-full max-w-full mx-auto px-2">
-              <button onClick={() => handleScrollTo('services')} className="whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-white text-purple-950 hover:bg-purple-50 font-bold text-xs transition-all shadow-lg shadow-purple-950/40 active:scale-95 cursor-pointer flex items-center gap-1.5">
-                <Lightbulb className="w-3.5 h-3.5" />
-                Solutions
-              </button>
-              <button onClick={() => handleScrollTo('work')} className="whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/25 text-purple-200 hover:text-white font-semibold text-xs transition-all cursor-pointer flex items-center gap-1.5">
-                <Briefcase className="w-3.5 h-3.5" />
-                Selected Work
-              </button>
-            </div>
-          </BlurReveal>
+            <BlurReveal delay={0.38} duration={0.8} blurAmount={18} yOffset={20}>
+              <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 pt-2 w-full max-w-full mx-auto px-2">
+                <button onClick={() => handleScrollTo('services')} className="whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-white text-purple-950 hover:bg-purple-50 font-bold text-xs transition-all shadow-lg shadow-purple-950/40 active:scale-95 cursor-pointer flex items-center gap-1.5">
+                  <Lightbulb className="w-3.5 h-3.5" />
+                  Solutions
+                </button>
+                <button onClick={() => handleScrollTo('work')} className="whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/25 text-purple-200 hover:text-white font-semibold text-xs transition-all cursor-pointer flex items-center gap-1.5">
+                  <Briefcase className="w-3.5 h-3.5" />
+                  Selected Work
+                </button>
+              </div>
+            </BlurReveal>
+          </div>
 
+          {/* Trusted By - Slider Only */}
           <BlurReveal delay={0.48} duration={0.8} blurAmount={16} yOffset={16}>
-            <div className="pt-2 sm:pt-4 w-full">
-              <p className="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase text-purple-300/60 mb-2 sm:mb-2.5 text-center">
+            <div className="pt-12 sm:pt-16 w-full pb-8 opacity-80">
+              <p className="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase text-purple-300/60 mb-0.5 sm:mb-1 text-center">
                 Trusted by
               </p>
               <ClientMarquee />
@@ -165,7 +169,7 @@ export function HomePage({ handleScrollTo, handleOpenInquiry, setSelectedProject
                         onOpenInquiry={handleOpenInquiry}
                       />
                     ) : (
-                      <BeforeAfterSlider
+                      <WebsiteCard
                         project={project}
                         onSelectProject={setSelectedProject}
                         onOpenInquiry={handleOpenInquiry}
@@ -206,33 +210,33 @@ export function HomePage({ handleScrollTo, handleOpenInquiry, setSelectedProject
 
           <BlurReveal blurAmount={24} yOffset={28} duration={0.85} delay={0.1}>
             <div className="p-6 rounded-2xl bg-[#0f041e]/90 border border-purple-500/15 space-y-4 shadow-xl shadow-purple-950/30">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="space-y-1">
-                  <label className="text-xs font-medium text-purple-200">Name</label>
-                  <input type="text" placeholder="Jane Doe" className="w-full px-3 py-2 rounded-xl bg-purple-950/40 border border-purple-500/20 text-white placeholder:text-purple-300/30 text-xs focus:outline-none focus:border-purple-400" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="text-[10px] uppercase tracking-wider font-semibold text-purple-300/70">Name</label>
+                  <input type="text" placeholder="Jane Doe" className="w-full px-4 py-3 rounded-xl bg-purple-950/20 border border-purple-500/20 text-white placeholder:text-purple-300/30 text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all" />
                 </div>
-                <div className="space-y-1">
-                  <label className="text-xs font-medium text-purple-200">Work Email</label>
-                  <input type="email" placeholder="jane@company.com" className="w-full px-3 py-2 rounded-xl bg-purple-950/40 border border-purple-500/20 text-white placeholder:text-purple-300/30 text-xs focus:outline-none focus:border-purple-400" />
+                <div className="space-y-1.5">
+                  <label className="text-[10px] uppercase tracking-wider font-semibold text-purple-300/70">Work Email</label>
+                  <input type="email" placeholder="jane@company.com" className="w-full px-4 py-3 rounded-xl bg-purple-950/20 border border-purple-500/20 text-white placeholder:text-purple-300/30 text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all" />
                 </div>
               </div>
 
-              <div className="space-y-1">
-                <label htmlFor="service-select" className="text-xs font-medium text-purple-200">Service Required</label>
-                <select id="service-select" className="w-full px-3 py-2 rounded-xl bg-[#140628] border border-purple-500/20 text-white text-xs focus:outline-none focus:border-purple-400">
+              <div className="space-y-1.5">
+                <label htmlFor="service-select" className="text-[10px] uppercase tracking-wider font-semibold text-purple-300/70">Service Required</label>
+                <select id="service-select" className="w-full px-4 py-3 rounded-xl bg-purple-950/20 border border-purple-500/20 text-white text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all">
                   <option value="video-editing">Video Editing Sprint</option>
                   <option value="website-redesign">Website Redesign</option>
                   <option value="all-inclusive">All-in-One Growth Bundle</option>
                 </select>
               </div>
 
-              <div className="space-y-1">
-                <label className="text-xs font-medium text-purple-200">Project Details or Links</label>
-                <textarea rows={3} placeholder="Share your raw footage links, current website, or reference designs..." className="w-full px-3 py-2 rounded-xl bg-purple-950/40 border border-purple-500/20 text-white placeholder:text-purple-300/30 text-xs focus:outline-none focus:border-purple-400 resize-none" />
+              <div className="space-y-1.5">
+                <label className="text-[10px] uppercase tracking-wider font-semibold text-purple-300/70">Project Details or Links</label>
+                <textarea rows={4} placeholder="Share your raw footage links, current website, or reference designs..." className="w-full px-4 py-3 rounded-xl bg-purple-950/20 border border-purple-500/20 text-white placeholder:text-purple-300/30 text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all resize-none" />
               </div>
 
-              <button onClick={() => handleOpenInquiry('video-editing')} className="w-full py-3 px-4 rounded-xl bg-white text-purple-950 hover:bg-purple-50 font-bold text-xs transition-all flex items-center justify-center gap-2 active:scale-95 shadow-md">
-                <Send className="w-3.5 h-3.5 text-purple-950" />
+              <button onClick={() => handleOpenInquiry('video-editing')} className="w-full py-4 px-4 rounded-xl bg-white text-purple-950 hover:bg-purple-50 font-bold text-sm transition-all flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] active:scale-[0.98] shadow-md">
+                <Send className="w-4 h-4 text-purple-950" />
                 <span>Request Availability & Proposal</span>
               </button>
 

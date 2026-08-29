@@ -17,7 +17,7 @@ export interface TeamMember {
 export type ServiceType = 'video-editing' | 'website-redesign';
 
 export type VideoCategory = 'Viral Short / Reel' | 'Cinematic Commercial' | 'YouTube Longform' | '3D Motion Graphics' | 'SaaS Explainer';
-export type WebCategory = 'SaaS Platform' | 'Luxury E-Commerce' | 'AI / Tech Landing' | 'Creative Studio' | 'Fintech Web App';
+export type WebCategory = 'SaaS Platform' | 'Luxury E-Commerce' | 'AI / Tech Landing' | 'Creative Studio' | 'Fintech Web App' | 'Corporate Website';
 
 export type ProjectCategory = VideoCategory | WebCategory;
 
@@ -81,6 +81,7 @@ export interface PortfolioProject {
   pacingRhythm?: 'Ultra Fast (TikTok/Reels)' | 'Cinematic Story' | 'Educational Flow' | 'High-Energy Teaser';
 
   // Website-specific properties
+  websiteUrl?: string;
   beforeImage?: string;
   afterImage?: string;
   livePreviewMockup?: string;

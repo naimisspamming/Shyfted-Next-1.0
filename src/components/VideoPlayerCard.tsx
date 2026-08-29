@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { PortfolioProject } from '../types';
-import { Play, Pause, Volume2, VolumeX, ArrowUpRight } from 'lucide-react';
+import { Play, Pause } from 'lucide-react';
 
 interface VideoPlayerCardProps {
   project: PortfolioProject;
@@ -13,26 +13,19 @@ export const VideoPlayerCard: React.FC<VideoPlayerCardProps> = ({
   onSelectProject,
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const togglePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current.play().catch(() => {});
-      setIsPlaying(true);
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play().catch(() => {});
+        setIsPlaying(true);
+      }
     }
-  };
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!videoRef.current) return;
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
   };
 
   return (
@@ -42,17 +35,54 @@ export const VideoPlayerCard: React.FC<VideoPlayerCardProps> = ({
     >
       {/* Video Viewport */}
       <div
-        className="relative bg-black cursor-pointer overflow-hidden aspect-[16/10] sm:aspect-video flex items-center justify-center"
-        onClick={togglePlay}
+        className={`relative bg-black overflow-hidden ${project.aspectRatio === '9:16' ? 'aspect-[9/16]' : 'aspect-video'} flex items-center justify-center`}
       >
-        {project.videoUrl ? (
+        {project.videoUrl && project.videoUrl.includes('youtube.com') ? (
+          (() => {
+            const getYoutubeId = (url: string) => {
+              const shortMatch = url.match(/\/shorts\/([a-zA-Z0-9_-]{11})/);
+              if (shortMatch) return shortMatch[1];
+              const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+              const match = url.match(regExp);
+              return (match && match[2].length === 11) ? match[2] : null;
+            };
+            const videoId = getYoutubeId(project.videoUrl);
+            return videoId ? (
+              <iframe
+                src={`https://www.youtube.com/embed/${videoId}?rel=0`}
+                title={project.title}
+                className="w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : null;
+          })()
+        ) : project.videoUrl && project.videoUrl.includes('vimeo.com') ? (
+          (() => {
+            const getVimeoId = (url: string) => {
+              const match = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+              return match ? match[1] : null;
+            };
+            const videoId = getVimeoId(project.videoUrl);
+            return videoId ? (
+              <iframe
+                src={`https://player.vimeo.com/video/${videoId}`}
+                title={project.title}
+                className="w-full h-full"
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                allowFullScreen
+              />
+            ) : null;
+          })()
+        ) : project.videoUrl ? (
           <video
             ref={videoRef}
             src={project.videoUrl}
             poster={project.coverImage}
             playsInline
             loop
-            muted={isMuted}
             onEnded={() => setIsPlaying(false)}
             className="w-full h-full object-cover"
           />
@@ -65,33 +95,12 @@ export const VideoPlayerCard: React.FC<VideoPlayerCardProps> = ({
             className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
           />
         )}
-
-        {/* Minimal Play/Pause Button */}
-        <div
-          className={`absolute inset-0 m-auto w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-purple-400/30 text-white flex items-center justify-center transition-all duration-200 pointer-events-none ${
-            isPlaying ? 'opacity-0 group-hover:opacity-90 scale-90' : 'opacity-90 scale-100'
-          }`}
-        >
-          {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5 fill-white" />}
-        </div>
-
-        {/* Mute Control */}
-        {project.videoUrl && (
-          <button
-            onClick={toggleMute}
-            className="absolute bottom-3 right-3 p-1.5 rounded-lg bg-black/60 backdrop-blur-md border border-purple-400/20 text-purple-200 hover:text-white transition-colors"
-            title={isMuted ? 'Unmute' : 'Mute'}
-          >
-            {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-purple-300" />}
-          </button>
-        )}
       </div>
 
-      {/* Info & Action */}
-      <div className="p-5 flex-1 flex flex-col justify-between gap-4">
+      {/* Info */}
+      <div className="p-5">
         <div>
           <div className="flex items-center justify-between text-xs text-purple-300/70 font-medium mb-1.5">
-            <span>{project.client}</span>
             {project.stats?.[0] && (
               <span className="text-purple-300 font-bold">{project.stats[0].value} {project.stats[0].label}</span>
             )}
@@ -99,19 +108,10 @@ export const VideoPlayerCard: React.FC<VideoPlayerCardProps> = ({
           <h3 className="text-base font-bold text-white tracking-tight group-hover:text-purple-200 transition-colors">
             {project.title}
           </h3>
-          <p className="text-xs text-purple-200/60 mt-1 line-clamp-2 leading-relaxed">
-            {project.tagline}
+          <p className="text-xs text-purple-200/60 mt-0.5">
+            For {project.client}
           </p>
         </div>
-
-        <button
-          id={`view-details-${project.id}`}
-          onClick={() => onSelectProject(project)}
-          className="w-full py-2.5 px-3.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/20 text-purple-100 hover:text-white text-xs font-semibold text-center transition-all flex items-center justify-center gap-1.5"
-        >
-          <span>View Project Case Study</span>
-          <ArrowUpRight className="w-3.5 h-3.5 text-purple-300" />
-        </button>
       </div>
     </div>
   );
