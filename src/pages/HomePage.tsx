@@ -81,7 +81,7 @@ export function HomePage({ handleScrollTo, handleOpenInquiry, setSelectedProject
 
             <BlurReveal delay={0.28} duration={0.85} blurAmount={20} yOffset={24}>
               <p className="text-[13px] sm:text-base text-purple-200/80 max-w-sm sm:max-w-xl mx-auto leading-relaxed font-normal px-1 sm:px-0 [text-wrap:balance]">
-                We help ambitious creators, founders, and modern brands turn fleeting attention into devoted audiences and revenue through world-class visual storytelling.
+                Shyfted Next provides professional video editing and modern website redesign services, helping businesses and brands build a stronger digital presence.
               </p>
             </BlurReveal>
 

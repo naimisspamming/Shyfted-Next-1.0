@@ -1,6 +1,6 @@
 {
   "name": "Shyfted Next",
-  "description": "Minimalist, sleek studio showcase app for Shyfted Next, featuring high-retention video editing and conversion-first modern website redesign portfolios.",
+  "description": "Shyfted Next provides professional video editing and modern website redesign services, helping businesses and brands build a stronger digital presence.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
