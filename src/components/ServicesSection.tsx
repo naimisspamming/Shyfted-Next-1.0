@@ -7,7 +7,7 @@ import { BlurReveal } from './BlurReveal';
 import { CategoryTabs } from './CategoryTabs';
 
 interface ServicesSectionProps {
-  onOpenInquiry: (service: string, packageTitle?: string) => void;
+  onOpenInquiry: (service: string, packageTitle?: string, flowType?: 'free-design' | 'basic-plan' | 'standard-plan' | 'premium-plan' | 'generic') => void;
 }
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry }) => {
@@ -86,7 +86,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry 
 
               <button
                 id={`select-pkg-${pkg.name.toLowerCase().replace(/\s+/g, '-')}`}
-                onClick={() => onOpenInquiry(selectedServiceId, `${pkg.name} (${pkg.price})`)}
+                onClick={() => onOpenInquiry(selectedServiceId, `${pkg.name} (${pkg.price})`, `${pkg.name.toLowerCase().replace(/\s+/g, '-')}-plan` as any)}
                 className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95 ${
                   pkg.popular
                     ? 'bg-white text-purple-950 hover:bg-purple-50 shadow-md'

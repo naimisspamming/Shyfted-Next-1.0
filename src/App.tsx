@@ -1,5 +1,7 @@
 import React, { useState, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'motion/react';
+import { SpeedometerPreloader } from './components/SpeedometerPreloader';
 import { Header } from './components/Header';
 import { SectionDivider } from './components/SectionDivider';
 import { ShyftedLogo } from './components/Logo';
@@ -16,18 +18,21 @@ import { ContactDrawer } from './components/ContactDrawer';
 import { PortfolioProject } from './types';
 
 function AppContent() {
+  const [showPreloader, setShowPreloader] = useState(true);
   const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [contactInitialService, setContactInitialService] = useState<string>('video-editing');
   const [contactInitialProjectTitle, setContactInitialProjectTitle] = useState<string | undefined>();
+  const [contactFlowType, setContactFlowType] = useState<'free-design' | 'basic-plan' | 'standard-plan' | 'premium-plan' | 'generic'>('generic');
   
   const navigate = useNavigate();
   const location = useLocation();
   const isBioPage = location.pathname !== '/' && location.pathname !== '/team';
 
-  const handleOpenInquiry = (service: string = 'video-editing', projectTitle?: string) => {
+  const handleOpenInquiry = (service: string = 'video-editing', projectTitle?: string, flowType: 'free-design' | 'basic-plan' | 'standard-plan' | 'premium-plan' | 'generic' = 'generic') => {
     setContactInitialService(service);
     setContactInitialProjectTitle(projectTitle);
+    setContactFlowType(flowType);
     setIsContactOpen(true);
   };
 
@@ -46,11 +51,14 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-[#07010e] bg-purple-ambient text-purple-50 flex flex-col selection:bg-purple-500 selection:text-white font-sans">
+      <AnimatePresence>
+        {showPreloader && <SpeedometerPreloader onComplete={() => setShowPreloader(false)} />}
+      </AnimatePresence>
       
       {!isBioPage && (
         <Header
           onScrollTo={handleScrollTo}
-          onOpenContact={() => handleOpenInquiry('video-editing')}
+          onOpenContact={() => handleOpenInquiry('video-editing', undefined, 'free-design')}
         />
       )}
 
@@ -97,6 +105,7 @@ function AppContent() {
           onClose={() => setIsContactOpen(false)}
           initialService={contactInitialService}
           initialProjectTitle={contactInitialProjectTitle}
+          flowType={contactFlowType}
         />
       </Suspense>
     </div>
