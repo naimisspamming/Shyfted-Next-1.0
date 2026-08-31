@@ -2,7 +2,6 @@ import React, { useState, useMemo, Suspense } from 'react';
 import { PORTFOLIO_PROJECTS, AGENCY_STATS, CLIENT_LOGOS } from '../data/portfolioData';
 import { PortfolioProject, ServiceType } from '../types';
 import { VideoPlayerCard } from '../components/VideoPlayerCard';
-import { YoutubeFacade } from '../components/YoutubeFacade';
 import { CategoryTabs } from '../components/CategoryTabs';
 import { SectionDivider } from '../components/SectionDivider';
 import { ClientMarquee } from '../components/ClientMarquee';
@@ -32,25 +31,6 @@ export function HomePage({ handleScrollTo, handleOpenInquiry, setSelectedProject
     <>
       {/* HERO SECTION - Dedicated Full Screen Viewport */}
       <div className="relative w-full overflow-hidden border-b border-purple-500/10">
-        {/* Background YouTube Video */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden select-none z-0">
-          <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-            <YoutubeFacade
-              videoId="fbSaIHpeP-c"
-              title="Hero Background Video"
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300vw] h-[200vw] min-w-[200vh] min-h-[120vh] max-w-none max-h-none pointer-events-none opacity-60 border-0 outline-none select-none scale-125 transition-opacity duration-1000 grayscale contrast-125 saturate-0"
-              autoPlay={true}
-            />
-            <div className="absolute inset-0 w-full h-full z-10" />
-          </div>
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'linear-gradient(to bottom, rgba(7,1,14,0.05) 0%, rgba(7,1,14,0.2) 35%, rgba(7,1,14,0.65) 70%, rgba(7,1,14,0.90) 100%)'
-            }}
-          />
-        </div>
-
         <section
           id="hero"
           className="min-h-[calc(100dvh-4rem)] w-full flex flex-col justify-between items-center text-center px-4 sm:px-6 py-6 sm:py-10 max-w-5xl mx-auto relative z-20"

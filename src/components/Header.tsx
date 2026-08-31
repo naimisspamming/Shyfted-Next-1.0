@@ -81,7 +81,7 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 id="header-start-project-btn"
                 onClick={handleOpenContact}
-                className="relative w-[126px] sm:w-[134px] h-7 sm:h-8 px-2 rounded-[8.5px] font-bold text-[11px] sm:text-xs transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1 overflow-hidden z-10 bg-black text-white hover:bg-stone-900"
+                className="relative w-[126px] sm:w-[134px] h-7 sm:h-8 px-2 rounded-[8.5px] font-bold text-[11px] sm:text-xs transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1 overflow-hidden z-10 bg-white text-black hover:bg-stone-100"
               >
                 <div className="relative w-20 sm:w-22 h-3.5 flex items-center justify-center overflow-hidden">
                   <AnimatePresence mode="wait">
@@ -91,13 +91,13 @@ export const Header: React.FC<HeaderProps> = ({
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 1.02 }}
                       transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
-                      className="whitespace-nowrap absolute inset-0 flex items-center justify-center text-center font-bold text-[11px] sm:text-xs tracking-tight text-white"
+                      className="whitespace-nowrap absolute inset-0 flex items-center justify-center text-center font-bold text-[11px] sm:text-xs tracking-tight text-black"
                     >
                       {rotatingTexts[textIndex]}
                     </motion.span>
                   </AnimatePresence>
                 </div>
-                <ArrowUpRight className="w-3 h-3 shrink-0 text-white" />
+                <ArrowUpRight className="w-3 h-3 shrink-0 text-black" />
               </button>
             </div>
             

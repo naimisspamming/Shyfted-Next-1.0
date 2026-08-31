@@ -1,7 +1,6 @@
 import React, { useState, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'motion/react';
-import { SpeedometerPreloader } from './components/SpeedometerPreloader';
 import { Header } from './components/Header';
 import { SectionDivider } from './components/SectionDivider';
 import { ShyftedLogo } from './components/Logo';
@@ -21,7 +20,6 @@ import { PortfolioProject } from './types';
 function AppContent() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [showPreloader, setShowPreloader] = useState(location.pathname === '/');
   const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [contactInitialService, setContactInitialService] = useState<string>('video-editing');
@@ -53,7 +51,6 @@ function AppContent() {
   return (
     <div className="min-h-screen bg-[#07010e] bg-purple-ambient text-purple-50 flex flex-col selection:bg-purple-500 selection:text-white font-sans">
       <AnimatePresence>
-        {showPreloader && <SpeedometerPreloader onComplete={() => setShowPreloader(false)} />}
       </AnimatePresence>
       
       {!isBioPage && (

@@ -16,7 +16,7 @@ export function BeforeAfterMockup() {
       }
       setTimeout(typeNext, 400);
 
-      const sigPath = document.getElementById('sigPath') as SVGPathElement;
+      const sigPath = document.getElementById('sigPath') as unknown as SVGPathElement;
       if (!sigPath) return;
       const len = sigPath.getTotalLength();
       sigPath.style.strokeDasharray = len.toString();
