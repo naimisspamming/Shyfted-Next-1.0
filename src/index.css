@@ -42,3 +42,20 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #7e22ce;
 }
+
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes counter-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+.si-pivot-anim {
+  animation: orbit-spin 24s linear infinite;
+  animation-delay: var(--d);
+}
+.si-spin-anim {
+  animation: counter-spin 24s linear infinite;
+  animation-delay: var(--d);
+}

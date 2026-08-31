@@ -13,20 +13,21 @@ import { MohaddesBioPage } from './pages/MohaddesBioPage';
 import { RaiyanBioPage } from './pages/RaiyanBioPage';
 import { NomanBioPage } from './pages/NomanBioPage';
 import { RabbyBioPage } from './pages/RabbyBioPage';
+import { SignatureIdentityPage } from './pages/SignatureIdentityPage';
 import { ProjectModal } from './components/ProjectModal';
 import { ContactDrawer } from './components/ContactDrawer';
 import { PortfolioProject } from './types';
 
 function AppContent() {
-  const [showPreloader, setShowPreloader] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [showPreloader, setShowPreloader] = useState(location.pathname === '/');
   const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [contactInitialService, setContactInitialService] = useState<string>('video-editing');
   const [contactInitialProjectTitle, setContactInitialProjectTitle] = useState<string | undefined>();
   const [contactFlowType, setContactFlowType] = useState<'free-design' | 'basic-plan' | 'standard-plan' | 'premium-plan' | 'generic'>('generic');
   
-  const navigate = useNavigate();
-  const location = useLocation();
   const isBioPage = location.pathname !== '/' && location.pathname !== '/team';
 
   const handleOpenInquiry = (service: string = 'video-editing', projectTitle?: string, flowType: 'free-design' | 'basic-plan' | 'standard-plan' | 'premium-plan' | 'generic' = 'generic') => {
@@ -70,6 +71,7 @@ function AppContent() {
         <Route path="/raiyan" element={<RaiyanBioPage />} />
         <Route path="/noman" element={<NomanBioPage />} />
         <Route path="/rabby" element={<RabbyBioPage />} />
+        <Route path="/signature-identity" element={<SignatureIdentityPage />} />
       </Routes>
 
       {!isBioPage && (
