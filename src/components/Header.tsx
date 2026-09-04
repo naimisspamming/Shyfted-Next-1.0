@@ -156,9 +156,9 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 id="header-start-project-btn"
                 onClick={handleOpenContact}
-                className="relative w-[116px] min-[360px]:w-[126px] sm:w-[134px] h-7 sm:h-8 px-1.5 sm:px-2 rounded-[8.5px] font-bold text-[10.5px] min-[360px]:text-[11px] sm:text-xs transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1 overflow-hidden z-10 bg-white text-black hover:bg-stone-100"
+                className="relative w-[138px] min-[360px]:w-[148px] sm:w-[158px] h-7 sm:h-8 px-2 sm:px-2.5 rounded-[8.5px] font-bold text-[10.5px] min-[360px]:text-[11px] sm:text-xs transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1.5 z-10 bg-white text-black hover:bg-stone-100"
               >
-                <div className="relative w-[72px] min-[360px]:w-20 sm:w-22 h-3.5 flex items-center justify-center overflow-hidden">
+                <div className="relative w-[96px] min-[360px]:w-[104px] sm:w-[114px] h-3.5 flex items-center justify-center overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={rotatingTexts[textIndex]}

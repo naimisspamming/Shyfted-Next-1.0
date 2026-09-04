@@ -38,10 +38,10 @@ export const AGENCY_SERVICES: AgencyService[] = [
       'Source Premiere Pro / DaVinci project files upon request',
     ],
     workflow: [
-      { step: '01', title: 'Raw Footage & Brief', desc: 'Upload raw assets via Google Drive or Frame.io with style references.' },
-      { step: '02', title: 'Rough Cut & Pacing', desc: 'We build the story arc, trim fluff, and lock the rhythm within 24 hours.' },
-      { step: '03', title: 'VFX & Audio Layering', desc: 'Apply motion graphics, sound design, color grading, and hooks.' },
-      { step: '04', title: 'Polished Delivery', desc: 'Final review round and export ready for immediate multi-platform publishing.' },
+      { step: '01', title: 'Footage Collecting', desc: 'Upload raw video clips, brief, or reference links.' },
+      { step: '02', title: 'Editing', desc: 'Cut dead air, structure hooks, add VFX, sound design & polish.' },
+      { step: '03', title: 'Revision Phase', desc: 'Review the cut and request custom adjustments or polish.' },
+      { step: '04', title: 'Done', desc: 'Receive algorithm-ready 4K exports and launch your content.' },
     ],
     packages: [
       {
@@ -125,10 +125,10 @@ export const AGENCY_SERVICES: AgencyService[] = [
       'Comprehensive Lighthouse speed & SEO optimization report',
     ],
     workflow: [
-      { step: '01', title: 'Audit & Wireframing', desc: 'Identify bounce points, analyze competitors, and map high-converting flows.' },
-      { step: '02', title: 'Visual Art Direction', desc: 'Craft sleek aesthetic concepts, typography systems, and interactive styles.' },
-      { step: '03', title: 'Prototype & Code', desc: 'Build the interactive prototype and production codebase with flawless responsiveness.' },
-      { step: '04', title: 'Launch & QA', desc: 'End-to-end speed audits, cross-device testing, analytics integration, and go-live.' },
+      { step: '01', title: 'Footage & Asset Collecting', desc: 'Share your brand assets, design references, and goals.' },
+      { step: '02', title: 'Editing (Build)', desc: 'Craft the UI layout, responsive components, and clean code build.' },
+      { step: '03', title: 'Revision Phase', desc: 'Review live prototype, provide feedback, and refine elements.' },
+      { step: '04', title: 'Done', desc: 'Final QA, speed optimization, and seamless site launch.' },
     ],
     packages: [
       {

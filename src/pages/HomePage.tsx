@@ -33,11 +33,11 @@ export function HomePage({ handleScrollTo, handleOpenInquiry, setSelectedProject
       <div className="relative w-full overflow-hidden border-b border-purple-500/10">
         <section
           id="hero"
-          className="min-h-[calc(100dvh-4rem)] w-full flex flex-col justify-between items-center text-center px-4 sm:px-6 py-6 sm:py-10 max-w-5xl mx-auto relative z-20"
+          className="min-h-[calc(100dvh-4rem)] w-full flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-12 sm:pt-20 pb-6 sm:pb-10 max-w-5xl mx-auto relative z-20"
         >
-        <div className="w-full flex-1 flex flex-col justify-center items-center max-w-3xl mx-auto">
+        <div className="w-full flex-1 flex flex-col justify-center items-center max-w-3xl mx-auto pt-4 sm:pt-8">
           {/* Group 1: Intro Content */}
-          <div className="flex flex-col items-center space-y-5 sm:space-y-6">
+          <div className="flex flex-col items-center space-y-6 sm:space-y-7">
             <BlurReveal delay={0.08} blurAmount={20} yOffset={20} duration={0.8}>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/70 border border-purple-500/30 text-[11px] sm:text-xs font-semibold text-purple-200 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.15)] max-w-full">
                 <span className="inline-block w-4 h-2.5 rounded-[2px] overflow-hidden shrink-0 shadow-sm border border-white/20 leading-none">
@@ -130,7 +130,7 @@ export function HomePage({ handleScrollTo, handleOpenInquiry, setSelectedProject
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -24 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6 transform-gpu"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transform-gpu"
             >
                {filteredProjects.map((project, index) => (
                 <BlurReveal

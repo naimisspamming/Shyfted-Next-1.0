@@ -27,64 +27,52 @@ const CATEGORY_PROCESSES: Record<ServiceType, ProcessStep[]> = {
   'video-editing': [
     {
       number: '1',
-      title: 'Send Footage',
+      title: 'Footage Collecting',
       desc: 'Upload your raw video clips, brief, or reference links.',
       icon: UploadCloud,
     },
     {
       number: '2',
-      title: 'Hook & Pacing',
-      desc: 'We cut the dead air and structure a high-retention opening hook.',
+      title: 'Editing',
+      desc: 'We cut dead air, structure hooks, add VFX, sound design & polish.',
       icon: Scissors,
     },
     {
       number: '3',
-      title: 'VFX & Sound',
-      desc: 'We add animated subtitles, motion zoom-ins, and sound effects.',
-      icon: Sparkles,
-    },
-    {
-      number: '4',
-      title: 'Review & Feedback',
-      desc: 'Review your initial cut and request any adjustments.',
+      title: 'Revision Phase',
+      desc: 'Review the cut and request custom adjustments or polish.',
       icon: RefreshCw,
     },
     {
-      number: '5',
-      title: 'Ready to Post',
-      desc: 'Receive algorithm-ready 4K exports in under 48 hours.',
+      number: '4',
+      title: 'Done',
+      desc: 'Receive algorithm-ready 4K exports and launch your content.',
       icon: Rocket,
     },
   ],
   'website-redesign': [
     {
       number: '1',
-      title: 'Share Goals',
-      desc: 'Tell us about your brand, current site, and desired conversion goals.',
+      title: 'Footage & Asset Collecting',
+      desc: 'Share your brand assets, design references, and goals.',
       icon: MessageSquare,
     },
     {
       number: '2',
-      title: 'Layout & Flow',
-      desc: 'We map out a clean user journey and conversion-focused copy.',
-      icon: Layout,
-    },
-    {
-      number: '3',
-      title: 'UI Design',
-      desc: 'We design bespoke desktop and mobile screens with modern aesthetics.',
-      icon: PenTool,
-    },
-    {
-      number: '4',
-      title: 'Speed Build',
-      desc: 'We build your responsive site optimized for sub-second load times.',
+      title: 'Editing (Build)',
+      desc: 'Craft the UI layout, responsive components, and clean code build.',
       icon: Code2,
     },
     {
-      number: '5',
-      title: 'Launch Live',
-      desc: 'Your polished, high-converting website goes live seamlessly.',
+      number: '3',
+      title: 'Revision Phase',
+      desc: 'Review live prototype, provide feedback, and refine elements.',
+      icon: RefreshCw,
+    },
+    {
+      number: '4',
+      title: 'Done',
+      desc: 'Final QA, speed optimization, and seamless site launch.',
       icon: CheckCircle2,
     },
   ],
@@ -124,7 +112,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ initialCategory 
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -14 }}
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 transform-gpu"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 transform-gpu"
         >
           {steps.map((st) => {
             const Icon = st.icon;
