@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { PortfolioProject } from '../types';
 import { Play, Pause } from 'lucide-react';
+import { YoutubeFacade } from './YoutubeFacade';
 
 interface VideoPlayerCardProps {
   project: PortfolioProject;
@@ -48,13 +49,10 @@ export const VideoPlayerCard: React.FC<VideoPlayerCardProps> = ({
             };
             const videoId = getYoutubeId(project.videoUrl);
             return videoId ? (
-              <iframe
-                src={`https://www.youtube.com/embed/${videoId}?rel=0`}
+              <YoutubeFacade
+                videoId={videoId}
                 title={project.title}
                 className="w-full h-full"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
               />
             ) : null;
           })()

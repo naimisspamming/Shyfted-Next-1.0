@@ -28,7 +28,9 @@ export const ClientMarquee: React.FC<ClientMarqueeProps> = ({ className = '' }) 
           >
             <img
               src={logo}
-              alt=""
+              alt="Client Logo"
+              width="160"
+              height="48"
               className="max-h-8 sm:max-h-12 w-auto object-contain brightness-0 invert"
             />
           </div>
