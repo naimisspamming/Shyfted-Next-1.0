@@ -25,7 +25,7 @@ export function TeamPage() {
                         onClick={() => member.id === 'naimur-rahman' ? navigate('/naimur') : (member.id === 'mohaddes-ali-tuhin' ? navigate('/mohaddes') : (member.id === 'raiyan-karim' ? navigate('/raiyan') : (member.id === 'abdullah-al-noman' ? navigate('/noman') : (member.id === 'syed-rabby-hasan' ? navigate('/rabby') : setSelectedMember(member)))))}
                     >
                         <img src={member.avatar} alt={member.name} className="w-28 sm:w-32 h-28 sm:h-32 rounded-full mb-4 sm:mb-6 border-4 border-purple-500/20 object-cover" />
-                        <h3 className="text-lg sm:text-xl font-bold text-white text-center">{member.name}</h3>
+                        <h2 className="text-lg sm:text-xl font-bold text-white text-center">{member.name}</h2>
                         <p className="text-purple-400 font-semibold mb-4 sm:mb-6 text-sm sm:text-base">{member.role}</p>
                     </div>
                 </BlurReveal>

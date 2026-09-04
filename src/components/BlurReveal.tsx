@@ -19,6 +19,7 @@ export const BlurReveal: React.FC<BlurRevealProps> = ({
   className = '',
   delay = 0,
   duration = 0.85,
+  blurAmount,
   yOffset = 28,
   scaleOffset = 0.97,
   amount = 0.15,
