@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://www.shyftednext.com/sitemap.xml
 Sitemap: https://shyftednext.com/sitemap.xml
