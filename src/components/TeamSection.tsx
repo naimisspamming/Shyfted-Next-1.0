@@ -23,7 +23,7 @@ export function TeamSection() {
               className="p-6 rounded-2xl bg-[#0f041e]/90 border border-purple-500/15 shadow-xl shadow-purple-950/30 cursor-pointer hover:border-purple-500/30 transition-all"
               onClick={() => setSelectedMember(member)}
             >
-              <img src={member.avatar} alt={member.name} width="80" height="80" className="w-20 h-20 rounded-full mx-auto mb-4 border border-purple-500/20 object-cover" />
+              <img src={member.avatar} alt={member.name} width="80" height="80" loading="lazy" className="w-20 h-20 rounded-full mx-auto mb-4 border border-purple-500/20 object-cover" />
               <h3 className="text-lg font-bold text-white text-center">{member.name}</h3>
               <p className="text-purple-300 text-sm text-center mb-4">{member.role}</p>
             </div>
@@ -34,7 +34,7 @@ export function TeamSection() {
       {selectedMember && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-purple-950/80 backdrop-blur-sm" onClick={() => setSelectedMember(null)}>
           <div className="bg-[#0f041e] border border-purple-500/20 p-5 sm:p-8 rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={e => e.stopPropagation()}>
-            <img src={selectedMember.avatar} alt={selectedMember.name} width="128" height="128" className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 sm:mb-6 border-4 border-purple-500/20 object-cover" />
+            <img src={selectedMember.avatar} alt={selectedMember.name} width="128" height="128" loading="lazy" className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 sm:mb-6 border-4 border-purple-500/20 object-cover" />
             <h2 className="text-xl sm:text-2xl font-bold text-white text-center">{selectedMember.name}</h2>
             <p className="text-purple-400 text-center mb-3 sm:mb-4 text-sm">{selectedMember.role}</p>
             <p className="text-purple-200 text-xs sm:text-sm leading-relaxed mb-6">{selectedMember.bio}</p>

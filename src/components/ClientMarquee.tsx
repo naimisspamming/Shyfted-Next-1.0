@@ -20,6 +20,7 @@ export const ClientMarquee: React.FC<ClientMarqueeProps> = ({ className = '' }) 
         className="flex items-center gap-8 sm:gap-12 w-max"
         animate={{ x: ["0%", "-50%"] }}
         transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
+        style={{ willChange: 'transform', transform: 'translateZ(0)' }}
       >
         {marqueeItems.map((logo, index) => (
           <div
@@ -31,6 +32,7 @@ export const ClientMarquee: React.FC<ClientMarqueeProps> = ({ className = '' }) 
               alt="Client Logo"
               width="160"
               height="48"
+              loading="lazy"
               className="max-h-8 sm:max-h-12 w-auto object-contain brightness-0 invert"
             />
           </div>
