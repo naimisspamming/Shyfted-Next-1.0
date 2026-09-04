@@ -60,18 +60,16 @@ function AppContent() {
         />
       )}
 
-      <main role="main" className="flex-1">
-        <Routes>
-          <Route path="/" element={<HomePage handleScrollTo={handleScrollTo} handleOpenInquiry={handleOpenInquiry} setSelectedProject={setSelectedProject} />} />
-          <Route path="/team" element={<TeamPage />} />
-          <Route path="/naimur" element={<NaimurBioPage />} />
-          <Route path="/mohaddes" element={<MohaddesBioPage />} />
-          <Route path="/raiyan" element={<RaiyanBioPage />} />
-          <Route path="/noman" element={<NomanBioPage />} />
-          <Route path="/rabby" element={<RabbyBioPage />} />
-          <Route path="/signature-identity" element={<SignatureIdentityPage />} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage handleScrollTo={handleScrollTo} handleOpenInquiry={handleOpenInquiry} setSelectedProject={setSelectedProject} />} />
+        <Route path="/team" element={<TeamPage />} />
+        <Route path="/naimur" element={<NaimurBioPage />} />
+        <Route path="/mohaddes" element={<MohaddesBioPage />} />
+        <Route path="/raiyan" element={<RaiyanBioPage />} />
+        <Route path="/noman" element={<NomanBioPage />} />
+        <Route path="/rabby" element={<RabbyBioPage />} />
+        <Route path="/signature-identity" element={<SignatureIdentityPage />} />
+      </Routes>
 
       {!isStandaloneCustomHeaderPage && (
         <BlurReveal blurAmount={16} yOffset={20} duration={0.8}>
