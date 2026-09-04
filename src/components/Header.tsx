@@ -68,7 +68,7 @@ export const Header: React.FC<HeaderProps> = ({
   // Compute navigation items
   const activeMenuItems: MenuItem[] = menuItems || mobileMenuItems || [
     { label: 'Work', action: () => handleScrollTo('work') },
-    { label: 'Services & Rates', action: () => handleScrollTo('services') },
+    { label: 'Solutions', action: () => handleScrollTo('services') },
     { label: 'Process', action: () => handleScrollTo('process') },
     { label: 'Team', isLink: true, to: '/team' },
     { label: 'Signature Identity', isLink: true, to: '/signature-identity', badge: 'New' },

@@ -65,8 +65,9 @@ export const ContactDrawer: React.FC<ContactDrawerProps> = ({
     switch (flowType) {
       case 'free-design':
         return [
-          { id: 1, title: 'Your Info' },
-          { id: 2, title: 'Project Details' },
+          { id: 1, title: 'Choose Free Service' },
+          { id: 2, title: 'Your Info' },
+          { id: 3, title: 'Project Details' },
         ];
       case 'basic-plan':
         return [
@@ -84,10 +85,7 @@ export const ContactDrawer: React.FC<ContactDrawerProps> = ({
         ];
       default:
         return [
-          { id: 1, title: 'Inquiry Type' },
-          { id: 2, title: 'Basic Info' },
-          { id: 3, title: 'Service & Budget' },
-          { id: 4, title: 'Project Details' },
+          { id: 1, title: 'Instant Reservation' },
         ];
     }
   };
@@ -149,6 +147,53 @@ export const ContactDrawer: React.FC<ContactDrawerProps> = ({
                   <ChevronRight className="w-4 h-4 opacity-50" />
                 </button>
               ))}
+            </div>
+          </div>
+        );
+      case 'Choose Free Service':
+        return (
+          <div className="space-y-4 animate-fadeIn">
+            <h3 className="text-lg font-bold text-white mb-2">What free service do you want?</h3>
+            <p className="text-xs text-purple-200/70 mb-4">Select whether you'd like a free high-retention video edit or a free website redesign concept.</p>
+            <div className="grid grid-cols-1 gap-3">
+              {[
+                { id: 'video-editing', label: 'Free Video Editing', desc: 'High-retention shorts, reels & hooks' },
+                { id: 'website-redesign', label: 'Free Website Redesign', desc: 'Conversion-focused landing page UI/UX' },
+              ].map((srv) => (
+                <button
+                  key={srv.id}
+                  type="button"
+                  onClick={() => {
+                    setFormData({ ...formData, service: srv.id as any });
+                    setCurrentStep(currentStep + 1);
+                  }}
+                  className={`flex flex-col text-left p-4 rounded-2xl border transition-all cursor-pointer ${
+                    formData.service === srv.id
+                      ? 'bg-purple-600/30 border-purple-400 text-white shadow-md'
+                      : 'bg-purple-950/20 border-purple-500/15 text-purple-200 hover:border-purple-500/30'
+                  }`}
+                >
+                  <span className="font-bold text-sm text-white">{srv.label}</span>
+                  <span className="text-xs text-purple-200/70 mt-1">{srv.desc}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        );
+      case 'Instant Reservation':
+        return (
+          <div className="space-y-4 animate-fadeIn">
+            <h3 className="text-lg font-bold text-white mb-2">Reserve Your Spot</h3>
+            <p className="text-xs text-purple-200/70 mb-4">Submit your details to reserve instantly. No questionnaires required.</p>
+            <div className="space-y-3">
+              <div>
+                <label className="text-xs text-purple-200 mb-1 block">Your Name</label>
+                <input type="text" required placeholder="Alex Rivera" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-purple-950/40 border border-purple-500/20 text-white text-sm focus:border-purple-400 focus:outline-none" />
+              </div>
+              <div>
+                <label className="text-xs text-purple-200 mb-1 block">Work Email</label>
+                <input type="email" required placeholder="alex@company.com" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-purple-950/40 border border-purple-500/20 text-white text-sm focus:border-purple-400 focus:outline-none" />
+              </div>
             </div>
           </div>
         );
@@ -254,11 +299,11 @@ export const ContactDrawer: React.FC<ContactDrawerProps> = ({
                 </div>
                 <div>
                   <h2 className="text-sm font-bold text-white">
-                    {flowType === 'free-design' ? 'Get Your Free Design' : 
+                    {flowType === 'free-design' ? 'Get Your Free Edit' : 
                      flowType === 'basic-plan' ? 'Get Started: Basic Plan' :
                      flowType === 'standard-plan' ? 'Get Started: Standard Plan' :
                      flowType === 'premium-plan' ? 'Get Started: Premium Plan' :
-                     'Partner with Shyfted Next'}
+                     'Instant Reservation'}
                   </h2>
                   <div className="flex gap-1 mt-0.5">
                     {steps.map((step) => (

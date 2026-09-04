@@ -53,7 +53,7 @@ const CATEGORY_PROCESSES: Record<ServiceType, ProcessStep[]> = {
   'website-redesign': [
     {
       number: '1',
-      title: 'Footage & Asset Collecting',
+      title: 'Asset Collecting',
       desc: 'Share your brand assets, design references, and goals.',
       icon: MessageSquare,
     },

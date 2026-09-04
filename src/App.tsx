@@ -81,7 +81,7 @@ function AppContent() {
               <div>© {new Date().getFullYear()} Shyfted Next Creative Studio.</div>
               <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-purple-300/70">
                 <button onClick={() => handleScrollTo('work')} className="hover:text-white transition-colors">Work</button>
-                <button onClick={() => handleScrollTo('services')} className="hover:text-white transition-colors">Services</button>
+                <button onClick={() => handleScrollTo('services')} className="hover:text-white transition-colors">Solutions</button>
                 <button onClick={() => handleScrollTo('process')} className="hover:text-white transition-colors">Process</button>
                 <button onClick={() => navigate('/team')} className="hover:text-white transition-colors">Team</button>
                 <button onClick={() => navigate('/signature-identity')} className="hover:text-white transition-colors">Signature Identity</button>

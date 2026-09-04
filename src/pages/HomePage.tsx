@@ -7,7 +7,7 @@ import { SectionDivider } from '../components/SectionDivider';
 import { ClientMarquee } from '../components/ClientMarquee';
 import { BlurReveal } from '../components/BlurReveal';
 import { motion, AnimatePresence } from 'motion/react';
-import { Send, ChevronDown, Lightbulb, Briefcase } from 'lucide-react';
+import { Send, ChevronDown, Lightbulb, Briefcase, CheckCircle2 } from 'lucide-react';
 
 const WebsiteCard = React.lazy(() => import('../components/WebsiteCard').then(m => ({ default: m.WebsiteCard })));
 const ServicesSection = React.lazy(() => import('../components/ServicesSection').then(m => ({ default: m.ServicesSection })));
@@ -15,6 +15,11 @@ const ProcessSection = React.lazy(() => import('../components/ProcessSection').t
 
 export function HomePage({ handleScrollTo, handleOpenInquiry, setSelectedProject }) {
   const [serviceFilter, setServiceFilter] = useState<ServiceType>('video-editing');
+  const [reserveName, setReserveName] = useState('');
+  const [reserveEmail, setReserveEmail] = useState('');
+  const [reserveService, setReserveService] = useState('video-editing');
+  const [reserveDetails, setReserveDetails] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
   
   const filteredProjects = useMemo(() => {
     return PORTFOLIO_PROJECTS.filter((p) => p.service === serviceFilter);
@@ -26,6 +31,12 @@ export function HomePage({ handleScrollTo, handleOpenInquiry, setSelectedProject
       'website-redesign': PORTFOLIO_PROJECTS.filter((p) => p.service === 'website-redesign').length,
     };
   }, []);
+
+  const handleDirectSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!reserveName || !reserveEmail) return;
+    setIsSubmitted(true);
+  };
 
   return (
     <>
@@ -190,35 +201,88 @@ export function HomePage({ handleScrollTo, handleOpenInquiry, setSelectedProject
 
           <BlurReveal blurAmount={24} yOffset={28} duration={0.85} delay={0.1}>
             <div className="p-6 rounded-2xl bg-[#0f041e]/90 border border-purple-500/15 space-y-4 shadow-xl shadow-purple-950/30">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-[10px] uppercase tracking-wider font-semibold text-purple-300/70">Name</label>
-                  <input type="text" placeholder="Jane Doe" className="w-full px-4 py-3 rounded-xl bg-purple-950/20 border border-purple-500/20 text-white placeholder:text-purple-300/30 text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all" />
+              {isSubmitted ? (
+                <div className="py-8 text-center space-y-4 animate-fadeIn">
+                  <div className="w-12 h-12 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-400 flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-6 h-6" />
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-bold text-white">Production Window Reserved!</h3>
+                    <p className="text-xs text-purple-200/70">Thank you {reserveName}. Our team will review your submission and reach out to {reserveEmail} within 4 hours.</p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setIsSubmitted(false);
+                      setReserveName('');
+                      setReserveEmail('');
+                      setReserveDetails('');
+                    }}
+                    className="mt-4 px-6 py-2.5 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-200 text-xs font-semibold transition-colors"
+                  >
+                    Submit Another Request
+                  </button>
                 </div>
-                <div className="space-y-1.5">
-                  <label className="text-[10px] uppercase tracking-wider font-semibold text-purple-300/70">Work Email</label>
-                  <input type="email" placeholder="jane@company.com" className="w-full px-4 py-3 rounded-xl bg-purple-950/20 border border-purple-500/20 text-white placeholder:text-purple-300/30 text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all" />
-                </div>
-              </div>
+              ) : (
+                <form onSubmit={handleDirectSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] uppercase tracking-wider font-semibold text-purple-300/70">Name</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Jane Doe"
+                        value={reserveName}
+                        onChange={(e) => setReserveName(e.target.value)}
+                        className="w-full px-4 py-3 rounded-xl bg-purple-950/20 border border-purple-500/20 text-white placeholder:text-purple-300/30 text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] uppercase tracking-wider font-semibold text-purple-300/70">Work Email</label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="jane@company.com"
+                        value={reserveEmail}
+                        onChange={(e) => setReserveEmail(e.target.value)}
+                        className="w-full px-4 py-3 rounded-xl bg-purple-950/20 border border-purple-500/20 text-white placeholder:text-purple-300/30 text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all"
+                      />
+                    </div>
+                  </div>
 
-              <div className="space-y-1.5">
-                <label htmlFor="service-select" className="text-[10px] uppercase tracking-wider font-semibold text-purple-300/70">Service Required</label>
-                <select id="service-select" className="w-full px-4 py-3 rounded-xl bg-purple-950/20 border border-purple-500/20 text-white text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all">
-                  <option value="video-editing">Video Editing Sprint</option>
-                  <option value="website-redesign">Website Redesign</option>
-                  <option value="all-inclusive">All-in-One Growth Bundle</option>
-                </select>
-              </div>
+                  <div className="space-y-1.5">
+                    <label htmlFor="service-select" className="text-[10px] uppercase tracking-wider font-semibold text-purple-300/70">Service Required</label>
+                    <select
+                      id="service-select"
+                      value={reserveService}
+                      onChange={(e) => setReserveService(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl bg-purple-950/20 border border-purple-500/20 text-white text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all"
+                    >
+                      <option value="video-editing" className="bg-[#0f041e] text-white">Video Editing Sprint</option>
+                      <option value="website-redesign" className="bg-[#0f041e] text-white">Website Redesign</option>
+                      <option value="all-inclusive" className="bg-[#0f041e] text-white">All-in-One Growth Bundle</option>
+                    </select>
+                  </div>
 
-              <div className="space-y-1.5">
-                <label className="text-[10px] uppercase tracking-wider font-semibold text-purple-300/70">Project Details or Links</label>
-                <textarea rows={4} placeholder="Share your raw footage links, current website, or reference designs..." className="w-full px-4 py-3 rounded-xl bg-purple-950/20 border border-purple-500/20 text-white placeholder:text-purple-300/30 text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all resize-none" />
-              </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] uppercase tracking-wider font-semibold text-purple-300/70">Project Details or Links</label>
+                    <textarea
+                      rows={4}
+                      value={reserveDetails}
+                      onChange={(e) => setReserveDetails(e.target.value)}
+                      placeholder="Share your raw footage links, current website, or reference designs..."
+                      className="w-full px-4 py-3 rounded-xl bg-purple-950/20 border border-purple-500/20 text-white placeholder:text-purple-300/30 text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all resize-none"
+                    />
+                  </div>
 
-              <button onClick={() => handleOpenInquiry('video-editing')} className="w-full py-4 px-4 rounded-xl bg-white text-purple-950 hover:bg-purple-50 font-bold text-sm transition-all flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] active:scale-[0.98] shadow-md">
-                <Send className="w-4 h-4 text-purple-950" />
-                <span>Request Availability & Proposal</span>
-              </button>
+                  <button
+                    type="submit"
+                    className="w-full py-4 px-4 rounded-xl bg-white text-purple-950 hover:bg-purple-50 font-bold text-sm transition-all flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] active:scale-[0.98] shadow-md cursor-pointer"
+                  >
+                    <Send className="w-4 h-4 text-purple-950" />
+                    <span>Request Availability & Proposal</span>
+                  </button>
+                </form>
+              )}
 
               <div className="pt-2 border-t border-purple-500/15 flex items-center justify-between text-[11px] text-purple-300/60">
                 <span>Direct: hello@shyftednext.com</span>

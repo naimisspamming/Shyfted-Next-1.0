@@ -125,7 +125,7 @@ export const AGENCY_SERVICES: AgencyService[] = [
       'Comprehensive Lighthouse speed & SEO optimization report',
     ],
     workflow: [
-      { step: '01', title: 'Footage & Asset Collecting', desc: 'Share your brand assets, design references, and goals.' },
+      { step: '01', title: 'Asset Collecting', desc: 'Share your brand assets, design references, and goals.' },
       { step: '02', title: 'Editing (Build)', desc: 'Craft the UI layout, responsive components, and clean code build.' },
       { step: '03', title: 'Revision Phase', desc: 'Review live prototype, provide feedback, and refine elements.' },
       { step: '04', title: 'Done', desc: 'Final QA, speed optimization, and seamless site launch.' },
