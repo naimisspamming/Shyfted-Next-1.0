@@ -26,7 +26,7 @@ function AppContent() {
   const [contactInitialProjectTitle, setContactInitialProjectTitle] = useState<string | undefined>();
   const [contactFlowType, setContactFlowType] = useState<'free-design' | 'basic-plan' | 'standard-plan' | 'premium-plan' | 'generic'>('generic');
   
-  const isBioPage = location.pathname !== '/' && location.pathname !== '/team';
+  const isStandaloneCustomHeaderPage = location.pathname === '/signature-identity';
 
   const handleOpenInquiry = (service: string = 'video-editing', projectTitle?: string, flowType: 'free-design' | 'basic-plan' | 'standard-plan' | 'premium-plan' | 'generic' = 'generic') => {
     setContactInitialService(service);
@@ -53,7 +53,7 @@ function AppContent() {
       <AnimatePresence>
       </AnimatePresence>
       
-      {!isBioPage && (
+      {!isStandaloneCustomHeaderPage && (
         <Header
           onScrollTo={handleScrollTo}
           onOpenContact={() => handleOpenInquiry('video-editing', undefined, 'free-design')}
@@ -71,7 +71,7 @@ function AppContent() {
         <Route path="/signature-identity" element={<SignatureIdentityPage />} />
       </Routes>
 
-      {!isBioPage && (
+      {!isStandaloneCustomHeaderPage && (
         <BlurReveal blurAmount={16} yOffset={20} duration={0.8}>
           <footer className="border-t border-purple-500/15 bg-[#05010a] py-8 text-xs text-purple-300/70 mt-20">
             <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -79,10 +79,12 @@ function AppContent() {
                 <ShyftedLogo size="xs" />
               </div>
               <div>© {new Date().getFullYear()} Shyfted Next Creative Studio.</div>
-              <div className="flex items-center gap-6 text-purple-300/70">
+              <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-purple-300/70">
                 <button onClick={() => handleScrollTo('work')} className="hover:text-white transition-colors">Work</button>
                 <button onClick={() => handleScrollTo('services')} className="hover:text-white transition-colors">Services</button>
+                <button onClick={() => handleScrollTo('process')} className="hover:text-white transition-colors">Process</button>
                 <button onClick={() => navigate('/team')} className="hover:text-white transition-colors">Team</button>
+                <button onClick={() => navigate('/signature-identity')} className="hover:text-white transition-colors">Signature Identity</button>
                 <button onClick={() => handleScrollTo('contact')} className="hover:text-white transition-colors">Contact</button>
               </div>
             </div>

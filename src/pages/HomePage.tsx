@@ -51,22 +51,22 @@ export function HomePage({ handleScrollTo, handleOpenInquiry, setSelectedProject
             </BlurReveal>
 
             <BlurReveal delay={0.18} duration={0.9} blurAmount={24} yOffset={28}>
-              <h1 className="text-[19px] min-[360px]:text-[21px] min-[400px]:text-[24px] min-[480px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.25] sm:leading-[1.12] max-w-none mx-auto">
-                <span className="block whitespace-nowrap">Crafting High-Retention Videos</span>
-                <span className="block whitespace-nowrap mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-white to-purple-300">
+              <h1 className="text-2xl min-[360px]:text-[26px] min-[400px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.2] sm:leading-[1.12] max-w-3xl mx-auto break-words [text-wrap:balance]">
+                <span className="inline sm:block">Crafting High-Retention Videos </span>
+                <span className="inline sm:block mt-1 sm:mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-white to-purple-300">
                   &amp; High-Converting Websites.
                 </span>
               </h1>
             </BlurReveal>
 
             <BlurReveal delay={0.28} duration={0.85} blurAmount={20} yOffset={24}>
-              <p className="text-[13px] sm:text-base text-purple-200/80 max-w-sm sm:max-w-xl mx-auto leading-relaxed font-normal px-1 sm:px-0 [text-wrap:balance]">
+              <p className="text-xs min-[360px]:text-[13px] sm:text-base text-purple-200/80 max-w-sm sm:max-w-xl mx-auto leading-relaxed font-normal px-2 sm:px-0 [text-wrap:balance]">
                 Shyfted Next provides professional video editing and modern website redesign services, helping businesses and brands build a stronger digital presence.
               </p>
             </BlurReveal>
 
             <BlurReveal delay={0.38} duration={0.8} blurAmount={18} yOffset={20}>
-              <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 pt-2 w-full max-w-full mx-auto px-2">
+              <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 pt-2 w-full max-w-full mx-auto px-2">
                 <button onClick={() => handleScrollTo('services')} className="whitespace-nowrap px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-white text-purple-950 hover:bg-purple-50 font-bold text-xs transition-all shadow-lg shadow-purple-950/40 active:scale-95 cursor-pointer flex items-center gap-1.5">
                   <Lightbulb className="w-3.5 h-3.5" />
                   Solutions

@@ -2,7 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { ShyftedLogo } from './Logo';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
+export interface MenuItem {
+  label: string;
+  action?: () => void;
+  isLink?: boolean;
+  to?: string;
+  badge?: string;
+}
 
 interface HeaderProps {
   onScrollTo: (sectionId: string) => void;
@@ -10,7 +18,8 @@ interface HeaderProps {
   theme?: 'dark' | 'light';
   rotatingTexts?: string[];
   accentColor?: 'gold' | 'green';
-  mobileMenuItems?: { label: string; action: () => void; isLink?: boolean }[];
+  menuItems?: MenuItem[];
+  mobileMenuItems?: MenuItem[];
   logoUrl?: string;
 }
 
@@ -22,11 +31,13 @@ export const Header: React.FC<HeaderProps> = ({
   theme = 'dark',
   rotatingTexts = DEFAULT_ROTATING_TEXTS,
   accentColor = 'green',
+  menuItems,
   mobileMenuItems,
   logoUrl,
 }) => {
   const [textIndex, setTextIndex] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -54,25 +65,89 @@ export const Header: React.FC<HeaderProps> = ({
     : 'bg-[conic-gradient(from_0deg,transparent_0_240deg,rgba(16,185,129,0.2)_270deg,#10b981_320deg,#4ade80_350deg,#86efac_360deg)]';
   const shadowClass = isGold ? 'shadow-[0_0_15px_rgba(215,179,107,0.25)]' : 'shadow-[0_0_15px_rgba(16,185,129,0.25)]';
 
+  // Compute navigation items
+  const activeMenuItems: MenuItem[] = menuItems || mobileMenuItems || [
+    { label: 'Work', action: () => handleScrollTo('work') },
+    { label: 'Services & Rates', action: () => handleScrollTo('services') },
+    { label: 'Process', action: () => handleScrollTo('process') },
+    { label: 'Team', isLink: true, to: '/team' },
+    { label: 'Signature Identity', isLink: true, to: '/signature-identity', badge: 'New' },
+  ];
+
+  const renderNavElement = (item: MenuItem, isMobile = false) => {
+    const isCurrent = item.to && location.pathname === item.to;
+    const baseClasses = isMobile
+      ? `text-left py-2 flex items-center justify-between transition-colors ${
+          isCurrent
+            ? isLight ? 'text-[#d7b36b] font-bold' : 'text-white font-bold'
+            : isLight ? 'text-stone-800 hover:text-[#d7b36b]' : 'text-purple-200 hover:text-white'
+        }`
+      : `transition-all cursor-pointer flex items-center gap-1.5 py-1 ${
+          isCurrent
+            ? isLight ? 'text-stone-950 font-bold border-b border-[#d7b36b]' : 'text-white font-bold border-b border-purple-400'
+            : isLight ? 'text-stone-600 hover:text-stone-900' : 'text-purple-200/70 hover:text-white'
+        }`;
+
+    const content = (
+      <>
+        <span>{item.label}</span>
+        {item.badge && (
+          <span className={`text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-full font-semibold ${
+            isLight ? 'bg-[#d7b36b]/15 text-[#b8954d]' : 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+          }`}>
+            {item.badge}
+          </span>
+        )}
+      </>
+    );
+
+    if (item.isLink && item.to) {
+      return (
+        <Link
+          key={item.label}
+          to={item.to}
+          className={baseClasses}
+          onClick={() => {
+            if (isMobile) setIsMobileMenuOpen(false);
+            if (item.action) item.action();
+          }}
+        >
+          {content}
+        </Link>
+      );
+    }
+
+    return (
+      <button
+        key={item.label}
+        onClick={() => {
+          if (isMobile) setIsMobileMenuOpen(false);
+          if (item.action) item.action();
+        }}
+        className={baseClasses}
+      >
+        {content}
+      </button>
+    );
+  };
+
   return (
     <>
       <header className={`sticky top-0 z-40 w-full backdrop-blur-xl border-b ${isLight ? 'bg-white/80 border-stone-200' : 'bg-[#080210]/80 border-purple-500/15'}`}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-3">
           <div 
             onClick={() => handleScrollTo('hero')}
-            className="cursor-pointer flex items-center"
+            className="cursor-pointer flex items-center shrink-0"
           >
-            {logoUrl ? <img src={logoUrl} alt="Logo" className="h-8" /> : <ShyftedLogo size="sm" />}
+            {logoUrl ? <img src={logoUrl} alt="Logo" className="h-7 sm:h-8" /> : <ShyftedLogo size="sm" />}
           </div>
 
-          <nav className={`hidden md:flex items-center gap-8 text-xs font-semibold ${isLight ? 'text-stone-700' : 'text-purple-200/70'}`}>
-            <button onClick={() => handleScrollTo('work')} className={`hover:${isLight ? 'text-stone-900' : 'text-white'} transition-colors`}>Work</button>
-            <button onClick={() => handleScrollTo('services')} className={`hover:${isLight ? 'text-stone-900' : 'text-white'} transition-colors`}>Services & Rates</button>
-            <button onClick={() => handleScrollTo('process')} className={`hover:${isLight ? 'text-stone-900' : 'text-white'} transition-colors`}>Process</button>
+          <nav className={`hidden md:flex items-center gap-5 lg:gap-7 text-xs font-semibold ${isLight ? 'text-stone-700' : 'text-purple-200/70'}`}>
+            {activeMenuItems.map((item) => renderNavElement(item, false))}
           </nav>
 
-          <div className="flex items-center gap-3">
-            <div className={`relative p-[2.5px] rounded-[11px] overflow-hidden group ${shadowClass}`}>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className={`relative p-[2px] sm:p-[2.5px] rounded-[11px] overflow-hidden group shrink-0 ${shadowClass}`}>
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ repeat: Infinity, duration: 3, ease: 'linear' }}
@@ -81,9 +156,9 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 id="header-start-project-btn"
                 onClick={handleOpenContact}
-                className="relative w-[126px] sm:w-[134px] h-7 sm:h-8 px-2 rounded-[8.5px] font-bold text-[11px] sm:text-xs transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1 overflow-hidden z-10 bg-white text-black hover:bg-stone-100"
+                className="relative w-[116px] min-[360px]:w-[126px] sm:w-[134px] h-7 sm:h-8 px-1.5 sm:px-2 rounded-[8.5px] font-bold text-[10.5px] min-[360px]:text-[11px] sm:text-xs transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1 overflow-hidden z-10 bg-white text-black hover:bg-stone-100"
               >
-                <div className="relative w-20 sm:w-22 h-3.5 flex items-center justify-center overflow-hidden">
+                <div className="relative w-[72px] min-[360px]:w-20 sm:w-22 h-3.5 flex items-center justify-center overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={rotatingTexts[textIndex]}
@@ -91,7 +166,7 @@ export const Header: React.FC<HeaderProps> = ({
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 1.02 }}
                       transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
-                      className="whitespace-nowrap absolute inset-0 flex items-center justify-center text-center font-bold text-[11px] sm:text-xs tracking-tight text-black"
+                      className="whitespace-nowrap absolute inset-0 flex items-center justify-center text-center font-bold text-[10.5px] min-[360px]:text-[11px] sm:text-xs tracking-tight text-black"
                     >
                       {rotatingTexts[textIndex]}
                     </motion.span>
@@ -102,10 +177,11 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             
             <button 
-              className={`md:hidden ${isLight ? 'text-stone-900' : 'text-purple-200'}`}
+              className={`md:hidden p-1 ${isLight ? 'text-stone-900' : 'text-purple-200'}`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle navigation menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>
@@ -117,26 +193,10 @@ export const Header: React.FC<HeaderProps> = ({
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className={`fixed inset-0 z-30 pt-20 px-6 md:hidden ${isLight ? 'bg-white' : 'bg-[#080210]'}`}
+            className={`fixed inset-0 z-30 pt-20 px-6 pb-10 overflow-y-auto md:hidden ${isLight ? 'bg-white' : 'bg-[#080210]'}`}
           >
-            <nav className={`flex flex-col gap-6 text-lg font-semibold ${isLight ? 'text-stone-900' : 'text-purple-100'}`}>
-              {mobileMenuItems ? (
-                mobileMenuItems.map((item, idx) => (
-                  item.isLink ? (
-                    <Link key={idx} to="/" className="py-2" onClick={item.action}>{item.label}</Link>
-                  ) : (
-                    <button key={idx} onClick={item.action} className="text-left py-2">{item.label}</button>
-                  )
-                ))
-              ) : (
-                <>
-                  <button onClick={() => handleScrollTo('work')} className="text-left py-2">Work</button>
-                  <button onClick={() => handleScrollTo('services')} className="text-left py-2">Services & Rates</button>
-                  <button onClick={() => handleScrollTo('process')} className="text-left py-2">Process</button>
-                  <Link to="/team" className="py-2" onClick={() => setIsMobileMenuOpen(false)}>Team</Link>
-                  <Link to="/signature-identity" className="py-2" onClick={() => setIsMobileMenuOpen(false)}>Signature Identity</Link>
-                </>
-              )}
+            <nav className={`flex flex-col gap-4 text-lg font-semibold ${isLight ? 'text-stone-900' : 'text-purple-100'}`}>
+              {activeMenuItems.map((item) => renderNavElement(item, true))}
             </nav>
           </motion.div>
         )}
@@ -144,3 +204,4 @@ export const Header: React.FC<HeaderProps> = ({
     </>
   );
 };
+

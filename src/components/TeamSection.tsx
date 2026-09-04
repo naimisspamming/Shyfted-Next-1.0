@@ -32,14 +32,14 @@ export function TeamSection() {
       </div>
 
       {selectedMember && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-purple-950/80 backdrop-blur-sm" onClick={() => setSelectedMember(null)}>
-          <div className="bg-[#0f041e] border border-purple-500/20 p-8 rounded-2xl max-w-md w-full shadow-2xl" onClick={e => e.stopPropagation()}>
-            <img src={selectedMember.avatar} alt={selectedMember.name} className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-purple-500/20" />
-            <h2 className="text-2xl font-bold text-white text-center">{selectedMember.name}</h2>
-            <p className="text-purple-400 text-center mb-4">{selectedMember.role}</p>
-            <p className="text-purple-200 text-sm leading-relaxed mb-6">{selectedMember.bio}</p>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-purple-950/80 backdrop-blur-sm" onClick={() => setSelectedMember(null)}>
+          <div className="bg-[#0f041e] border border-purple-500/20 p-5 sm:p-8 rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={e => e.stopPropagation()}>
+            <img src={selectedMember.avatar} alt={selectedMember.name} className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 sm:mb-6 border-4 border-purple-500/20 object-cover" />
+            <h2 className="text-xl sm:text-2xl font-bold text-white text-center">{selectedMember.name}</h2>
+            <p className="text-purple-400 text-center mb-3 sm:mb-4 text-sm">{selectedMember.role}</p>
+            <p className="text-purple-200 text-xs sm:text-sm leading-relaxed mb-6">{selectedMember.bio}</p>
             {selectedMember.socials?.linkedin && (
-              <a href={selectedMember.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 text-white bg-blue-600 px-4 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 transition-colors">
+              <a href={selectedMember.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 text-white bg-blue-600 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold hover:bg-blue-700 transition-colors">
                 <Linkedin size={16} />
                 Connect on LinkedIn
               </a>
