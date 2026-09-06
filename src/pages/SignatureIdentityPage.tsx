@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Sparkles, Globe, ShieldCheck, TrendingUp, ChevronRight, Check } from 'lucide-react';
+import { ArrowUpRight, Sparkles, Check } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Header } from '../components/Header';
 import { SolarSystem } from '../components/SolarSystem';
+import { BeforeAfterMockup } from '../components/BeforeAfterMockup';
 
 export function SignatureIdentityPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -100,10 +101,10 @@ export function SignatureIdentityPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative py-20 sm:py-24 md:py-32 overflow-hidden bg-gradient-to-b from-[#fffcf9] via-[#faf8f5] to-[#f4efe6]" id="overview">
+      <section className="py-14 sm:py-20 relative overflow-hidden bg-gradient-to-b from-[#fffcf9] via-[#faf8f5] to-[#f4efe6]" id="overview">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(215,179,107,0.15),transparent_70%)] pointer-events-none" />
         <div className="relative z-10 max-w-5xl mx-auto px-6 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 items-center">
             
             {/* Left Column: Text & CTAs */}
             <motion.div 
@@ -121,7 +122,7 @@ export function SignatureIdentityPage() {
                 Signature Identity builds the definitive digital footprint behind your name — ensuring investors, clients, and partners find an authoritative executive presence when they search for you.
               </p>
               
-              <div className="flex flex-row items-center justify-start gap-3 sm:gap-4 pt-2 w-full">
+              <div className="flex flex-row items-center justify-start gap-3 sm:gap-4 w-full">
                 <a href="#packages" className="px-5 py-3.5 sm:px-8 sm:py-4 bg-[#d7b36b] text-white text-[11px] sm:text-xs sm:text-sm font-bold uppercase tracking-widest hover:bg-[#b8954d] transition-all shadow-md rounded-2xl flex items-center gap-2 group whitespace-nowrap">
                   View Packages <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
@@ -148,70 +149,24 @@ export function SignatureIdentityPage() {
         </div>
       </section>
 
-      {/* Trust / Value Pillars Section */}
-      <section className="py-20 sm:py-24 bg-[#f4efe6] border-t border-[#e5dec9]">
-        <div className="max-w-5xl mx-auto px-6 space-y-10 sm:space-y-12">
+      {/* Before & After Transformation Section */}
+      <section className="py-14 sm:py-20 bg-[#f4efe6] border-t border-[#e5dec9]">
+        <div className="max-w-5xl mx-auto px-6 space-y-8 sm:space-y-10">
           <div className="flex flex-col items-center text-center">
-            <h2 className="text-2xl min-[380px]:text-3xl md:text-4xl font-bold tracking-tighter text-[#111827]">Engineered For Executive Dominance</h2>
+            <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-[#111827]">The Transformation</h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="bg-gradient-to-br from-white via-white to-[#fbf8f2] p-8 rounded-[28px] border border-[#e5dec9] shadow-[0_15px_35px_rgba(215,179,107,0.12)] space-y-5 hover:-translate-y-1.5 hover:shadow-[0_25px_50px_rgba(215,179,107,0.2)] hover:border-[#d7b36b] transition-all duration-300 group">
-              <div className="w-14 h-14 rounded-2xl bg-[#d7b36b]/10 border border-[#d7b36b]/30 flex items-center justify-center text-[#9e7d36] group-hover:bg-[#d7b36b] group-hover:text-white transition-all duration-300 shadow-inner">
-                <Globe size={24} />
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-bold text-[#111827] text-xl tracking-tight">Own Your SERP</h3>
-                <p className="text-xs sm:text-sm text-[#374151] leading-relaxed">
-                  When someone searches your name, control the narrative with a pristine, verified first-page search result.
-                </p>
-              </div>
-              <div className="pt-2 flex items-center gap-1.5 text-xs font-bold text-[#9e7d36] group-hover:text-[#d7b36b] transition-colors">
-                <span>Explore SERP Control</span> <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-white via-white to-[#fbf8f2] p-8 rounded-[28px] border border-[#e5dec9] shadow-[0_15px_35px_rgba(215,179,107,0.12)] space-y-5 hover:-translate-y-1.5 hover:shadow-[0_25px_50px_rgba(215,179,107,0.2)] hover:border-[#d7b36b] transition-all duration-300 group">
-              <div className="w-14 h-14 rounded-2xl bg-[#d7b36b]/10 border border-[#d7b36b]/30 flex items-center justify-center text-[#9e7d36] group-hover:bg-[#d7b36b] group-hover:text-white transition-all duration-300 shadow-inner">
-                <ShieldCheck size={24} />
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-bold text-[#111827] text-xl tracking-tight">Executive Trust</h3>
-                <p className="text-xs sm:text-sm text-[#374151] leading-relaxed">
-                  Instantly build credibility with enterprise clients, tier-1 investors, and top press outlets.
-                </p>
-              </div>
-              <div className="pt-2 flex items-center gap-1.5 text-xs font-bold text-[#9e7d36] group-hover:text-[#d7b36b] transition-colors">
-                <span>Discover Trust Protocol</span> <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-white via-white to-[#fbf8f2] p-8 rounded-[28px] border border-[#e5dec9] shadow-[0_15px_35px_rgba(215,179,107,0.12)] space-y-5 hover:-translate-y-1.5 hover:shadow-[0_25px_50px_rgba(215,179,107,0.2)] hover:border-[#d7b36b] transition-all duration-300 group">
-              <div className="w-14 h-14 rounded-2xl bg-[#d7b36b]/10 border border-[#d7b36b]/30 flex items-center justify-center text-[#9e7d36] group-hover:bg-[#d7b36b] group-hover:text-white transition-all duration-300 shadow-inner">
-                <TrendingUp size={24} />
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-bold text-[#111827] text-xl tracking-tight">Compounding Value</h3>
-                <p className="text-xs sm:text-sm text-[#374151] leading-relaxed">
-                  Your digital reputation is your greatest equity. We engineer it to grow stronger and more authoritative every month.
-                </p>
-              </div>
-              <div className="pt-2 flex items-center gap-1.5 text-xs font-bold text-[#9e7d36] group-hover:text-[#d7b36b] transition-colors">
-                <span>View Growth Metrics</span> <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
-          </div>
+          <BeforeAfterMockup />
         </div>
       </section>
 
       {/* Process / Roadmap Section */}
-      <section className="py-20 sm:py-24 bg-[#faf8f5] border-t border-[#e5dec9]" id="process">
-        <div className="max-w-5xl mx-auto px-6 space-y-10 sm:space-y-12">
+      <section className="py-14 sm:py-20 bg-[#faf8f5] border-t border-[#e5dec9]" id="process">
+        <div className="max-w-5xl mx-auto px-6 space-y-8 sm:space-y-10">
           <div className="flex flex-col items-center text-center">
             <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-[#111827]">How We Build Your Signature</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
               { step: "01", title: "Audit & Map", desc: "Comprehensive analysis of your current search footprint, missing schema, and authority gaps." },
               { step: "02", title: "Core Hub", desc: "Building your canonical personal website with high-performance architecture and pristine typography." },
@@ -234,8 +189,8 @@ export function SignatureIdentityPage() {
       </section>
 
       {/* Packages Section */}
-      <section className="py-20 sm:py-24 bg-[#f4efe6] border-t border-[#e5dec9]" id="packages">
-        <div className="max-w-5xl mx-auto px-6 space-y-10 sm:space-y-12">
+      <section className="py-14 sm:py-20 bg-[#f4efe6] border-t border-[#e5dec9]" id="packages">
+        <div className="max-w-5xl mx-auto px-6 space-y-8 sm:space-y-10">
           <div className="flex flex-col items-center text-center">
             <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-[#111827]">Choose Your Path</h2>
           </div>
@@ -332,8 +287,8 @@ export function SignatureIdentityPage() {
       </section>
 
       {/* Interactive FAQ Section */}
-      <section className="py-20 sm:py-24 bg-[#faf8f5] border-t border-[#e5dec9]" id="faq">
-        <div className="max-w-4xl mx-auto px-6 space-y-10 sm:space-y-12">
+      <section className="py-14 sm:py-20 bg-[#faf8f5] border-t border-[#e5dec9]" id="faq">
+        <div className="max-w-4xl mx-auto px-6 space-y-8 sm:space-y-10">
           <div className="flex flex-col items-center text-center">
             <h2 className="text-2xl min-[380px]:text-3xl md:text-4xl font-bold tracking-tighter text-[#111827]">Frequently Asked Questions</h2>
           </div>
@@ -368,16 +323,18 @@ export function SignatureIdentityPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 sm:py-24 bg-[#111827] text-white text-center border-t border-[#1f2937] flex flex-col items-center justify-center relative overflow-hidden" id="contact">
+      <section className="py-14 sm:py-20 bg-[#111827] text-white text-center border-t border-[#1f2937] flex flex-col items-center justify-center relative overflow-hidden" id="contact">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(215,179,107,0.2),transparent_75%)] pointer-events-none" />
-        <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center text-center space-y-6 sm:space-y-8 w-full">
-          <h2 className="text-3xl min-[380px]:text-4xl md:text-6xl font-black tracking-tight text-white">
-            Ready to define your signature?
-          </h2>
-          <p className="text-[#d1d5db] text-sm sm:text-base max-w-xl mx-auto text-center leading-relaxed">
-            Get in touch for a complimentary brand audit and executive digital presence roadmap consultation with our founders.
-          </p>
-          <div className="pt-2">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center text-center space-y-8 sm:space-y-10 w-full">
+          <div className="space-y-4 max-w-xl mx-auto">
+            <h2 className="text-3xl min-[380px]:text-4xl md:text-6xl font-black tracking-tight text-white">
+              Ready to define your signature?
+            </h2>
+            <p className="text-[#d1d5db] text-sm sm:text-base leading-relaxed">
+              Get in touch for a complimentary brand audit and executive digital presence roadmap consultation with our founders.
+            </p>
+          </div>
+          <div>
             <a 
               href="mailto:hello@shyftednext.com?subject=Signature%20Identity%20Consultation" 
               className="inline-flex items-center gap-2.5 px-10 py-5 bg-[#d7b36b] text-white font-bold uppercase tracking-widest text-xs sm:text-sm hover:bg-[#b8954d] transition-all rounded-2xl shadow-2xl hover:scale-105 transform duration-200"
