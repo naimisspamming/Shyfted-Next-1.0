@@ -11,8 +11,8 @@ export const SolarSystem: React.FC = () => {
   ];
 
   return (
-    <div className="relative w-full max-w-[380px] mx-auto py-4 flex items-center justify-center overflow-visible" id="siWrap">
-      <div className="relative w-[380px] h-[380px] flex items-center justify-center scale-[0.72] min-[380px]:scale-[0.82] min-[480px]:scale-90 sm:scale-100 origin-center transition-transform">
+    <div className="relative w-full max-w-[340px] sm:max-w-[380px] mx-auto py-0 flex items-center justify-center overflow-visible" id="siWrap">
+      <div className="relative w-[340px] h-[340px] sm:w-[380px] sm:h-[380px] flex items-center justify-center scale-[0.62] min-[380px]:scale-[0.72] sm:scale-100 origin-center transition-transform my-[-20px] sm:my-0">
         <div className="relative w-[280px] h-[280px]">
           {/* Orbit Ring */}
           <div className="absolute left-1/2 top-1/2 w-[280px] h-[280px] -ml-[140px] -mt-[140px] rounded-full border-[0.5px] border-dashed border-[#C9973D]"></div>

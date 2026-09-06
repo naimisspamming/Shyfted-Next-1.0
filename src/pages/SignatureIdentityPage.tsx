@@ -100,17 +100,17 @@ export function SignatureIdentityPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative py-24 sm:py-28 md:py-36 overflow-hidden bg-gradient-to-b from-[#fffcf9] via-[#faf8f5] to-[#f4efe6]" id="overview">
+      <section className="relative py-20 sm:py-24 md:py-32 overflow-hidden bg-gradient-to-b from-[#fffcf9] via-[#faf8f5] to-[#f4efe6]" id="overview">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(215,179,107,0.15),transparent_70%)] pointer-events-none" />
         <div className="relative z-10 max-w-5xl mx-auto px-6 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 lg:gap-8 items-center">
             
             {/* Left Column: Text & CTAs */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="lg:col-span-7 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start"
+              className="lg:col-span-7 order-2 lg:order-1 space-y-6 text-left flex flex-col items-start"
             >
               <h1 className="text-3xl min-[380px]:text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-black tracking-tight text-[#111827] leading-[1.08]">
                 Where Names <br className="inline" />
@@ -121,7 +121,7 @@ export function SignatureIdentityPage() {
                 Signature Identity builds the definitive digital footprint behind your name — ensuring investors, clients, and partners find an authoritative executive presence when they search for you.
               </p>
               
-              <div className="flex flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-3 w-full">
+              <div className="flex flex-row items-center justify-start gap-3 sm:gap-4 pt-2 w-full">
                 <a href="#packages" className="px-5 py-3.5 sm:px-8 sm:py-4 bg-[#d7b36b] text-white text-[11px] sm:text-xs sm:text-sm font-bold uppercase tracking-widest hover:bg-[#b8954d] transition-all shadow-md rounded-2xl flex items-center gap-2 group whitespace-nowrap">
                   View Packages <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
@@ -139,7 +139,7 @@ export function SignatureIdentityPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="lg:col-span-5 flex justify-center lg:justify-end overflow-visible"
+              className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end overflow-visible"
             >
               <SolarSystem />
             </motion.div>
@@ -149,13 +149,13 @@ export function SignatureIdentityPage() {
       </section>
 
       {/* Trust / Value Pillars Section */}
-      <section className="py-24 bg-[#f4efe6] border-t border-[#e5dec9]">
-        <div className="max-w-5xl mx-auto px-6 space-y-12">
-          <div className="flex flex-col items-center text-center space-y-3">
+      <section className="py-20 sm:py-24 bg-[#f4efe6] border-t border-[#e5dec9]">
+        <div className="max-w-5xl mx-auto px-6 space-y-10 sm:space-y-12">
+          <div className="flex flex-col items-center text-center">
             <h2 className="text-2xl min-[380px]:text-3xl md:text-4xl font-bold tracking-tighter text-[#111827]">Engineered For Executive Dominance</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <div className="bg-gradient-to-br from-white via-white to-[#fbf8f2] p-8 rounded-[28px] border border-[#e5dec9] shadow-[0_15px_35px_rgba(215,179,107,0.12)] space-y-5 hover:-translate-y-1.5 hover:shadow-[0_25px_50px_rgba(215,179,107,0.2)] hover:border-[#d7b36b] transition-all duration-300 group">
               <div className="w-14 h-14 rounded-2xl bg-[#d7b36b]/10 border border-[#d7b36b]/30 flex items-center justify-center text-[#9e7d36] group-hover:bg-[#d7b36b] group-hover:text-white transition-all duration-300 shadow-inner">
                 <Globe size={24} />
@@ -205,9 +205,9 @@ export function SignatureIdentityPage() {
       </section>
 
       {/* Process / Roadmap Section */}
-      <section className="py-24 bg-[#faf8f5] border-t border-[#e5dec9]" id="process">
-        <div className="max-w-5xl mx-auto px-6 space-y-16">
-          <div className="flex flex-col items-center text-center space-y-3">
+      <section className="py-20 sm:py-24 bg-[#faf8f5] border-t border-[#e5dec9]" id="process">
+        <div className="max-w-5xl mx-auto px-6 space-y-10 sm:space-y-12">
+          <div className="flex flex-col items-center text-center">
             <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-[#111827]">How We Build Your Signature</h2>
           </div>
 
@@ -234,9 +234,9 @@ export function SignatureIdentityPage() {
       </section>
 
       {/* Packages Section */}
-      <section className="py-24 bg-[#f4efe6] border-t border-[#e5dec9]" id="packages">
-        <div className="max-w-5xl mx-auto px-6 space-y-12 sm:space-y-16">
-          <div className="flex flex-col items-center text-center space-y-3">
+      <section className="py-20 sm:py-24 bg-[#f4efe6] border-t border-[#e5dec9]" id="packages">
+        <div className="max-w-5xl mx-auto px-6 space-y-10 sm:space-y-12">
+          <div className="flex flex-col items-center text-center">
             <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-[#111827]">Choose Your Path</h2>
           </div>
 
@@ -332,9 +332,9 @@ export function SignatureIdentityPage() {
       </section>
 
       {/* Interactive FAQ Section */}
-      <section className="py-24 bg-[#faf8f5] border-t border-[#e5dec9]" id="faq">
-        <div className="max-w-4xl mx-auto px-6 space-y-12">
-          <div className="flex flex-col items-center text-center space-y-3">
+      <section className="py-20 sm:py-24 bg-[#faf8f5] border-t border-[#e5dec9]" id="faq">
+        <div className="max-w-4xl mx-auto px-6 space-y-10 sm:space-y-12">
+          <div className="flex flex-col items-center text-center">
             <h2 className="text-2xl min-[380px]:text-3xl md:text-4xl font-bold tracking-tighter text-[#111827]">Frequently Asked Questions</h2>
           </div>
 
@@ -368,9 +368,9 @@ export function SignatureIdentityPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-[#111827] text-white text-center border-t border-[#1f2937] flex flex-col items-center justify-center relative overflow-hidden" id="contact">
+      <section className="py-20 sm:py-24 bg-[#111827] text-white text-center border-t border-[#1f2937] flex flex-col items-center justify-center relative overflow-hidden" id="contact">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(215,179,107,0.2),transparent_75%)] pointer-events-none" />
-        <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center text-center space-y-8 w-full">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center text-center space-y-6 sm:space-y-8 w-full">
           <h2 className="text-3xl min-[380px]:text-4xl md:text-6xl font-black tracking-tight text-white">
             Ready to define your signature?
           </h2>
