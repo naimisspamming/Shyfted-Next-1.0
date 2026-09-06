@@ -110,7 +110,7 @@ export function SignatureIdentityPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="lg:col-span-7 order-2 lg:order-1 space-y-6 text-left flex flex-col items-start"
+              className="lg:col-span-7 space-y-6 text-left flex flex-col items-start"
             >
               <h1 className="text-3xl min-[380px]:text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-black tracking-tight text-[#111827] leading-[1.08]">
                 Where Names <br className="inline" />
@@ -139,7 +139,7 @@ export function SignatureIdentityPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end overflow-visible"
+              className="lg:col-span-5 flex justify-center lg:justify-end overflow-visible"
             >
               <SolarSystem />
             </motion.div>
