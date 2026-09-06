@@ -9,6 +9,12 @@ interface LogoProps {
 
 const LOGO_URL = 'https://i.ibb.co.com/BHjC3Gbn/3697.webp';
 
+// Prefetch logo image immediately on module load
+if (typeof window !== 'undefined') {
+  const preloader = new Image();
+  preloader.src = LOGO_URL;
+}
+
 export const ShyftedLogo: React.FC<LogoProps> = ({
   size = 'md',
   showBackground = false,

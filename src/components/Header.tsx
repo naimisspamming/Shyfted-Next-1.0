@@ -134,7 +134,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <>
       <header className={`sticky top-0 z-40 w-full backdrop-blur-xl border-b ${isLight ? 'bg-white/80 border-stone-200' : 'bg-[#080210]/80 border-purple-500/15'}`}>
-        <div className="max-w-5xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-3">
+        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between gap-3">
           <div 
             onClick={() => handleScrollTo('hero')}
             className="cursor-pointer flex items-center shrink-0"

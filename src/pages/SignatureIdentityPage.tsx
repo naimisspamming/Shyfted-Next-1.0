@@ -80,9 +80,9 @@ export function SignatureIdentityPage() {
         logoUrl="https://i.ibb.co.com/cK2F88HX/output-onlinepngtools.png"
       />
       {/* Hero Section */}
-      <section className="relative px-6 sm:px-10 lg:px-16 py-20 sm:py-28 md:py-36 overflow-hidden" id="overview">
+      <section className="relative py-20 sm:py-28 md:py-36 overflow-hidden" id="overview">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(215,179,107,0.1),transparent_70%)]" />
-        <div className="relative z-10 max-w-6xl mx-auto w-full">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
              {/* Left Column: Text & CTAs */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
@@ -112,8 +112,8 @@ export function SignatureIdentityPage() {
       </section>
 
       {/* Compare Section */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-32 border-t border-stone-200" id="system">
-        <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
+      <section className="py-20 sm:py-32 border-t border-stone-200" id="system">
+        <div className="max-w-5xl mx-auto px-6 space-y-12 sm:space-y-16">
           <div className="flex flex-col items-center text-center space-y-3">
             <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-stone-900">From Fragmented to Definitive</h2>
             <p className="text-stone-600 text-xs sm:text-sm max-w-xl mx-auto text-center">See how we transform your digital footprint from scattered mentions into an authoritative executive presence.</p>
@@ -123,8 +123,8 @@ export function SignatureIdentityPage() {
       </section>
 
       {/* Packages Section */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-32 bg-stone-50/70 border-t border-stone-200" id="packages">
-        <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
+      <section className="py-20 sm:py-32 bg-stone-50/70 border-t border-stone-200" id="packages">
+        <div className="max-w-5xl mx-auto px-6 space-y-12 sm:space-y-16">
           <div className="flex flex-col items-center text-center space-y-3">
             <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-stone-900">Choose Your Path</h2>
             <p className="text-stone-600 text-xs sm:text-sm max-w-xl mx-auto text-center">Select the tier that aligns with your authority goals and digital presence requirements.</p>
@@ -197,8 +197,8 @@ export function SignatureIdentityPage() {
       </section>
 
       {/* SEO FAQ Section */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-32 bg-white border-t border-stone-200">
-        <div className="max-w-6xl mx-auto space-y-16">
+      <section className="py-20 sm:py-32 bg-white border-t border-stone-200">
+        <div className="max-w-5xl mx-auto px-6 space-y-16">
           <div className="flex flex-col items-center text-center space-y-3">
             <h2 className="text-2xl min-[380px]:text-3xl md:text-4xl font-bold tracking-tighter text-stone-900">Frequently Asked Questions</h2>
             <p className="text-stone-600 text-xs sm:text-sm max-w-lg mx-auto text-center">Everything you need to know about Signature Identity and Google ranking.</p>
@@ -225,8 +225,8 @@ export function SignatureIdentityPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-32 bg-stone-100 text-center border-t border-stone-200 flex flex-col items-center justify-center" id="contact">
-        <div className="max-w-6xl mx-auto flex flex-col items-center text-center space-y-8 w-full">
+      <section className="py-20 sm:py-32 bg-stone-100 text-center border-t border-stone-200 flex flex-col items-center justify-center" id="contact">
+        <div className="max-w-5xl mx-auto px-6 flex flex-col items-center text-center space-y-8 w-full">
           <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-stone-900">Ready to define your signature?</h2>
           <p className="text-stone-600 text-sm sm:text-base max-w-xl mx-auto text-center leading-relaxed">Get in touch for a complimentary brand audit and digital presence roadmap consultation.</p>
           <div className="pt-2">
