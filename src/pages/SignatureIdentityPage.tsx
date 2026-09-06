@@ -123,12 +123,12 @@ export function SignatureIdentityPage() {
               </p>
               
               <div className="flex flex-row items-center justify-start gap-3 sm:gap-4 w-full">
-                <a href="#packages" className="px-5 py-3.5 sm:px-8 sm:py-4 bg-[#d7b36b] text-white text-[11px] sm:text-xs sm:text-sm font-bold uppercase tracking-widest hover:bg-[#b8954d] transition-all shadow-md rounded-2xl flex items-center gap-2 group whitespace-nowrap">
+                <a href="#packages" className="px-5 py-3.5 sm:px-8 sm:py-4 bg-[#d7b36b] text-white text-[11px] sm:text-xs sm:text-sm font-bold uppercase tracking-widest hover:bg-[#b8954d] transition-all shadow-md rounded-xl flex items-center gap-2 group whitespace-nowrap">
                   View Packages <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
                 <button 
                   onClick={() => handleScrollTo('process')} 
-                  className="px-5 py-3.5 sm:px-8 sm:py-4 border border-[#e5dec9] text-[#111827] text-[11px] sm:text-xs sm:text-sm font-bold uppercase tracking-widest hover:border-[#d7b36b] hover:text-[#d7b36b] transition-all rounded-2xl bg-white shadow-sm whitespace-nowrap"
+                  className="px-5 py-3.5 sm:px-8 sm:py-4 border border-[#e5dec9] text-[#111827] text-[11px] sm:text-xs sm:text-sm font-bold uppercase tracking-widest hover:border-[#d7b36b] hover:text-[#d7b36b] transition-all rounded-xl bg-white shadow-sm whitespace-nowrap"
                 >
                   Explore Process
                 </button>
@@ -173,9 +173,9 @@ export function SignatureIdentityPage() {
               { step: "03", title: "Schema & SEO", desc: "Deploying advanced Google Knowledge Graph structured data and verifying professional profiles." },
               { step: "04", title: "Press & Scale", desc: "Securing authoritative media placements and ongoing authority monitoring to lock in top ranks." },
             ].map((p, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-white via-white to-[#fbf8f2] p-8 rounded-[28px] border border-[#e5dec9] shadow-[0_12px_35px_rgba(215,179,107,0.1)] relative flex flex-col justify-between space-y-6 hover:-translate-y-1 hover:border-[#d7b36b] hover:shadow-2xl transition-all duration-300 group">
+              <div key={idx} className="bg-gradient-to-br from-white via-white to-[#fbf8f2] p-8 rounded-xl border border-[#e5dec9] shadow-[0_12px_35px_rgba(215,179,107,0.1)] relative flex flex-col justify-between space-y-6 hover:-translate-y-1 hover:border-[#d7b36b] hover:shadow-2xl transition-all duration-300 group">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold tracking-widest px-3 py-1 bg-[#f4efe6] rounded-full text-[#9e7d36] group-hover:bg-[#d7b36b] group-hover:text-white transition-colors">PHASE {p.step}</span>
+                  <span className="text-xs font-mono font-bold tracking-widest px-3 py-1 bg-[#f4efe6] rounded-md text-[#9e7d36] group-hover:bg-[#d7b36b] group-hover:text-white transition-colors">PHASE {p.step}</span>
                   <Sparkles size={16} className="text-[#d7b36b]/60 group-hover:text-[#d7b36b] transition-colors" />
                 </div>
                 <div className="space-y-3">
@@ -243,7 +243,7 @@ export function SignatureIdentityPage() {
             ].map((pkg, i) => (
               <div 
                 key={i} 
-                className={`relative p-8 sm:p-10 border bg-white flex flex-col justify-between transition-all duration-300 rounded-[32px] ${
+                className={`relative p-8 sm:p-10 border bg-white flex flex-col justify-between transition-all duration-300 rounded-xl ${
                   pkg.popular 
                     ? 'border-[#d7b36b] shadow-2xl ring-2 ring-[#d7b36b]/30 scale-[1.03] z-10 bg-gradient-to-b from-white via-[#fffcf9] to-white' 
                     : 'border-[#e5dec9] shadow-xl hover:border-[#d7b36b]/70 hover:-translate-y-1 hover:shadow-2xl'
@@ -272,7 +272,7 @@ export function SignatureIdentityPage() {
                 
                 <a 
                   href="#contact" 
-                  className={`block text-center py-4 font-extrabold uppercase tracking-widest text-xs transition-all rounded-2xl ${
+                  className={`block text-center py-4 font-extrabold uppercase tracking-widest text-xs transition-all rounded-xl ${
                     pkg.popular
                       ? 'bg-[#d7b36b] text-white hover:bg-[#b8954d] shadow-xl shadow-[#d7b36b]/30 hover:scale-[1.02]'
                       : 'border border-[#e5dec9] text-[#111827] hover:border-[#d7b36b] hover:text-[#d7b36b] bg-[#f4efe6]/50'
@@ -299,7 +299,7 @@ export function SignatureIdentityPage() {
               return (
                 <div 
                   key={idx}
-                  className="bg-white border border-[#e5dec9] rounded-2xl overflow-hidden transition-all shadow-md hover:border-[#d7b36b]"
+                  className="bg-white border border-[#e5dec9] rounded-xl overflow-hidden transition-all shadow-md hover:border-[#d7b36b]"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
@@ -337,7 +337,7 @@ export function SignatureIdentityPage() {
           <div>
             <a 
               href="mailto:hello@shyftednext.com?subject=Signature%20Identity%20Consultation" 
-              className="inline-flex items-center gap-2.5 px-10 py-5 bg-[#d7b36b] text-white font-bold uppercase tracking-widest text-xs sm:text-sm hover:bg-[#b8954d] transition-all rounded-2xl shadow-2xl hover:scale-105 transform duration-200"
+              className="inline-flex items-center gap-2.5 px-10 py-5 bg-[#d7b36b] text-white font-bold uppercase tracking-widest text-xs sm:text-sm hover:bg-[#b8954d] transition-all rounded-xl shadow-2xl hover:scale-105 transform duration-200"
             >
               Claim Free Consultation <ArrowUpRight size={18} />
             </a>
