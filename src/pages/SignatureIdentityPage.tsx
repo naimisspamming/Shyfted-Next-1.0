@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, ShieldCheck, Search, Users, Link as LinkIcon, Star } from 'lucide-react';
+import { ArrowUpRight, ShieldCheck, Search, Sparkles, Award, Globe, TrendingUp, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Header } from '../components/Header';
 import { SolarSystem } from '../components/SolarSystem';
 import { BeforeAfterMockup } from '../components/BeforeAfterMockup';
 
 export function SignatureIdentityPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
   React.useEffect(() => {
-    document.title = "Signature Identity | Personal Branding & Google Knowledge Graph | Shyfted Next";
+    document.title = "Signature Identity | Executive Personal Branding & Google Knowledge Graph | Shyfted Next";
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
       metaDesc = document.createElement('meta');
       metaDesc.setAttribute('name', 'description');
       document.head.appendChild(metaDesc);
     }
-    metaDesc.setAttribute('content', 'Signature Identity by Shyfted Next builds authoritative personal brands, digital presence, Google search setups, and executive knowledge panels for founders and creators.');
+    metaDesc.setAttribute('content', 'Signature Identity by Shyfted Next engineers authoritative executive personal brands, verified Google knowledge panels, and premier digital prominence for founders and creators.');
 
     let metaKeywords = document.querySelector('meta[name="keywords"]');
     if (!metaKeywords) {
@@ -22,9 +24,8 @@ export function SignatureIdentityPage() {
       metaKeywords.setAttribute('name', 'keywords');
       document.head.appendChild(metaKeywords);
     }
-    metaKeywords.setAttribute('content', 'Signature Identity, Personal Branding Agency, Executive Branding, Google Knowledge Panel, Personal SEO, Digital Presence for Founders, Shyfted Next');
+    metaKeywords.setAttribute('content', 'Signature Identity, Executive Personal Branding, Google Knowledge Panel, Personal SEO, Founder Authority, Shyfted Next');
 
-    // Add JSON-LD Structured Data for Google SEO ranking
     const scriptId = 'signature-identity-schema';
     let scriptTag = document.getElementById(scriptId) as HTMLScriptElement | null;
     if (!scriptTag) {
@@ -41,7 +42,7 @@ export function SignatureIdentityPage() {
           "url": "https://shyftednext.com",
           "logo": "https://i.ibb.co.com/HL0MvWbd/20260827-231313-0000.webp"
         },
-        "description": "Professional signature identity, personal branding, Google search setup, and digital presence engineering for executives, creators, and founders.",
+        "description": "Professional signature identity, executive personal branding, Google search setup, and digital presence engineering for founders and creators.",
         "areaServed": "Worldwide",
         "serviceType": "Personal Branding & Digital Identity Engineering"
       });
@@ -63,13 +64,33 @@ export function SignatureIdentityPage() {
   const menuItems = [
     { label: 'Overview', action: () => handleScrollTo('overview') },
     { label: 'System', action: () => handleScrollTo('system') },
+    { label: 'Process', action: () => handleScrollTo('process') },
     { label: 'Packages', action: () => handleScrollTo('packages') },
-    { label: 'Contact', action: () => handleScrollTo('contact') },
+    { label: 'FAQ', action: () => handleScrollTo('faq') },
     { label: 'Main Site', isLink: true, to: '/' },
   ];
 
+  const faqs = [
+    {
+      q: "What is Signature Identity?",
+      a: "Signature Identity is a specialized personal branding and digital presence engineering framework designed to position founders, executives, and creators as definitive industry authorities when searched on Google."
+    },
+    {
+      q: "How does this help me rank on Google?",
+      a: "We optimize your personal name search results by building authoritative structured data (Schema.org), verified directory listings, professional media placements, and clean personal website architecture that commands Google's top results."
+    },
+    {
+      q: "How long does the setup take?",
+      a: "Core digital presence and initial Google indexing are established within 5 to 7 business days, with continuous authority growth and search prominence over subsequent weeks."
+    },
+    {
+      q: "Do I need existing press mentions?",
+      a: "No. Our Elite packages include strategic press and media syndication to help you establish the credibility required for top-tier Google rankings and knowledge panel recognition."
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-white text-stone-900 font-sans selection:bg-[#d7b36b] selection:text-white">
+    <div className="min-h-screen bg-[#faf8f5] text-[#111827] font-sans selection:bg-[#d7b36b] selection:text-white">
       <Header 
         onScrollTo={handleScrollTo} 
         onOpenContact={() => handleScrollTo('contact')} 
@@ -79,107 +100,246 @@ export function SignatureIdentityPage() {
         menuItems={menuItems}
         logoUrl="https://i.ibb.co.com/cK2F88HX/output-onlinepngtools.png"
       />
+
       {/* Hero Section */}
-      <section className="relative py-20 sm:py-28 md:py-36 overflow-hidden" id="overview">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(215,179,107,0.1),transparent_70%)]" />
+      <section className="relative pt-12 pb-24 sm:py-28 md:py-36 overflow-hidden bg-gradient-to-b from-[#fffcf9] via-[#faf8f5] to-[#f4efe6]" id="overview">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(215,179,107,0.15),transparent_70%)] pointer-events-none" />
         <div className="relative z-10 max-w-5xl mx-auto px-6 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
-             {/* Left Column: Text & CTAs */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
-              <h1 className="text-3xl min-[380px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-stone-900 pt-2 leading-[1.1]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            {/* Left Column: Text & CTAs */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-7 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#d7b36b]/40 text-[#9e7d36] text-[11px] font-bold uppercase tracking-widest shadow-sm">
+                <Sparkles size={13} /> Executive Authority & Google Presence
+              </div>
+              
+              <h1 className="text-3xl min-[380px]:text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-black tracking-tight text-[#111827] leading-[1.08]">
                 Where Names <br className="hidden sm:inline" />
-                <span className="text-[#d7b36b]">Become Brands.</span>
+                <span className="text-[#d7b36b] font-serif italic font-normal">Become Brands.</span>
               </h1>
-              <p className="text-sm sm:text-base md:text-lg text-stone-600 max-w-xl leading-relaxed">
-                Signature Identity builds the digital presence behind your name — so the right people can find you, understand you, and remember you.
+              
+              <p className="text-sm sm:text-base md:text-lg text-[#374151] max-w-xl leading-relaxed">
+                Signature Identity builds the definitive digital footprint behind your name — ensuring investors, clients, and partners find an authoritative executive presence when they search for you.
               </p>
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-                <a href="#packages" className="px-7 py-3.5 bg-[#d7b36b] text-white text-xs sm:text-sm font-bold uppercase tracking-widest hover:bg-[#b8954d] transition-all shadow-sm">
-                  Plans
+              
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-3 w-full">
+                <a href="#packages" className="px-8 py-4 bg-[#d7b36b] text-white text-xs sm:text-sm font-bold uppercase tracking-widest hover:bg-[#b8954d] transition-all shadow-md rounded-2xl flex items-center gap-2 group">
+                  View Packages <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
-                <button className="px-7 py-3.5 border border-stone-300 text-stone-900 text-xs sm:text-sm font-bold uppercase tracking-widest hover:border-[#d7b36b] hover:text-[#d7b36b] transition-all" onClick={() => handleScrollTo('system')}>
-                  Compare
+                <button 
+                  onClick={() => handleScrollTo('system')} 
+                  className="px-8 py-4 border border-[#e5dec9] text-[#111827] text-xs sm:text-sm font-bold uppercase tracking-widest hover:border-[#d7b36b] hover:text-[#d7b36b] transition-all rounded-2xl bg-white shadow-sm"
+                >
+                  See Comparison
                 </button>
+              </div>
+
+              <div className="pt-6 flex items-center justify-center lg:justify-start gap-6 text-xs text-[#4b5563] font-medium border-t border-[#e5dec9] w-full max-w-md">
+                <div className="flex items-center gap-1.5"><ShieldCheck size={16} className="text-[#d7b36b]" /> Verified Schema</div>
+                <div className="flex items-center gap-1.5"><Search size={16} className="text-[#d7b36b]" /> Google Top 3</div>
+                <div className="flex items-center gap-1.5"><Award size={16} className="text-[#d7b36b]" /> Elite Positioning</div>
+              </div>
+            </motion.div>
+
+            {/* Right Column: Moving Circles (SolarSystem) */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="lg:col-span-5 flex justify-center lg:justify-end overflow-visible"
+            >
+              <SolarSystem />
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Trust / Value Pillars Section (Smart Warm Bento Cards) */}
+      <section className="py-20 bg-[#f4efe6] border-t border-[#e5dec9]">
+        <div className="max-w-5xl mx-auto px-6 space-y-12">
+          <div className="flex flex-col items-center text-center space-y-3">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#9e7d36]">Core Advantages</span>
+            <h2 className="text-2xl min-[380px]:text-3xl md:text-4xl font-bold tracking-tighter text-[#111827]">Engineered For Executive Dominance</h2>
+            <p className="text-[#374151] text-xs sm:text-sm max-w-lg mx-auto text-center">Every element of your digital footprint is meticulously structured for absolute authority.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white p-8 rounded-3xl border border-[#e5dec9] shadow-[0_12px_35px_rgba(215,179,107,0.08)] space-y-4 hover:border-[#d7b36b] hover:shadow-2xl transition-all group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-28 h-28 bg-[#d7b36b]/10 rounded-bl-full pointer-events-none" />
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#d7b36b]/20 to-[#d7b36b]/5 border border-[#d7b36b]/30 flex items-center justify-center text-[#9e7d36] group-hover:scale-110 transition-transform">
+                <Globe size={22} />
+              </div>
+              <h3 className="font-bold text-[#111827] text-xl">Own Your SERP</h3>
+              <p className="text-xs sm:text-sm text-[#374151] leading-relaxed">
+                When someone searches your name, control the narrative with a pristine, verified first-page search result.
+              </p>
+              <div className="pt-2 flex items-center gap-1 text-xs font-bold text-[#9e7d36]">
+                <span>Explore SERP Control</span> <ChevronRight size={14} />
               </div>
             </div>
 
-            {/* Right Column: Moving Circles (SolarSystem) */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end overflow-visible">
-              <SolarSystem />
+            <div className="bg-white p-8 rounded-3xl border border-[#e5dec9] shadow-[0_12px_35px_rgba(215,179,107,0.08)] space-y-4 hover:border-[#d7b36b] hover:shadow-2xl transition-all group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-28 h-28 bg-[#d7b36b]/10 rounded-bl-full pointer-events-none" />
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#d7b36b]/20 to-[#d7b36b]/5 border border-[#d7b36b]/30 flex items-center justify-center text-[#9e7d36] group-hover:scale-110 transition-transform">
+                <ShieldCheck size={22} />
+              </div>
+              <h3 className="font-bold text-[#111827] text-xl">Executive Trust</h3>
+              <p className="text-xs sm:text-sm text-[#374151] leading-relaxed">
+                Instantly build credibility with enterprise clients, tier-1 investors, and top press outlets.
+              </p>
+              <div className="pt-2 flex items-center gap-1 text-xs font-bold text-[#9e7d36]">
+                <span>Discover Trust Protocol</span> <ChevronRight size={14} />
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl border border-[#e5dec9] shadow-[0_12px_35px_rgba(215,179,107,0.08)] space-y-4 hover:border-[#d7b36b] hover:shadow-2xl transition-all group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-28 h-28 bg-[#d7b36b]/10 rounded-bl-full pointer-events-none" />
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#d7b36b]/20 to-[#d7b36b]/5 border border-[#d7b36b]/30 flex items-center justify-center text-[#9e7d36] group-hover:scale-110 transition-transform">
+                <TrendingUp size={22} />
+              </div>
+              <h3 className="font-bold text-[#111827] text-xl">Compounding Value</h3>
+              <p className="text-xs sm:text-sm text-[#374151] leading-relaxed">
+                Your digital reputation is your greatest equity. We engineer it to grow stronger and more authoritative every month.
+              </p>
+              <div className="pt-2 flex items-center gap-1 text-xs font-bold text-[#9e7d36]">
+                <span>View Growth Metrics</span> <ChevronRight size={14} />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Compare Section */}
-      <section className="py-20 sm:py-32 border-t border-stone-200" id="system">
+      <section className="py-20 sm:py-32 border-t border-[#e5dec9] bg-[#faf8f5]" id="system">
         <div className="max-w-5xl mx-auto px-6 space-y-12 sm:space-y-16">
           <div className="flex flex-col items-center text-center space-y-3">
-            <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-stone-900">From Fragmented to Definitive</h2>
-            <p className="text-stone-600 text-xs sm:text-sm max-w-xl mx-auto text-center">See how we transform your digital footprint from scattered mentions into an authoritative executive presence.</p>
+            <span className="text-xs font-bold tracking-widest uppercase text-[#9e7d36]">Transformation Preview</span>
+            <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-[#111827]">From Fragmented to Definitive</h2>
+            <p className="text-[#374151] text-xs sm:text-sm max-w-xl mx-auto text-center">
+              Toggle below to see how we transform your digital footprint from scattered mentions into an authoritative executive presence.
+            </p>
           </div>
-          <BeforeAfterMockup />
+          <div className="bg-white p-4 sm:p-8 rounded-3xl border border-[#e5dec9] shadow-xl">
+            <BeforeAfterMockup />
+          </div>
+        </div>
+      </section>
+
+      {/* Process / Roadmap Section */}
+      <section className="py-20 sm:py-32 bg-[#f4efe6] border-t border-[#e5dec9]" id="process">
+        <div className="max-w-5xl mx-auto px-6 space-y-16">
+          <div className="flex flex-col items-center text-center space-y-3">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#9e7d36]">Execution Roadmap</span>
+            <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-[#111827]">How We Build Your Signature</h2>
+            <p className="text-[#374151] text-xs sm:text-sm max-w-xl mx-auto text-center">
+              A rigorous 4-step engineering protocol designed for founders, executives, and high-impact leaders.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: "01", title: "Audit & Map", desc: "Comprehensive analysis of your current search footprint, missing schema, and authority gaps." },
+              { step: "02", title: "Core Hub", desc: "Building your canonical personal website with high-performance architecture and pristine typography." },
+              { step: "03", title: "Schema & SEO", desc: "Deploying advanced Google Knowledge Graph structured data and verifying professional profiles." },
+              { step: "04", title: "Press & Scale", desc: "Securing authoritative media placements and ongoing authority monitoring to lock in top ranks." },
+            ].map((p, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-3xl border border-[#e5dec9] shadow-[0_12px_35px_rgba(215,179,107,0.08)] relative flex flex-col justify-between space-y-6 hover:border-[#d7b36b] hover:shadow-2xl transition-all group">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold tracking-widest px-3 py-1 bg-[#f4efe6] rounded-full text-[#9e7d36] group-hover:bg-[#d7b36b]/20 transition-colors">PHASE {p.step}</span>
+                  <Sparkles size={16} className="text-[#d7b36b]/60 group-hover:text-[#d7b36b] transition-colors" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="font-bold text-[#111827] text-xl">{p.title}</h3>
+                  <p className="text-xs sm:text-sm text-[#374151] leading-relaxed">{p.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Packages Section */}
-      <section className="py-20 sm:py-32 bg-stone-50/70 border-t border-stone-200" id="packages">
+      <section className="py-20 sm:py-32 bg-[#faf8f5] border-t border-[#e5dec9]" id="packages">
         <div className="max-w-5xl mx-auto px-6 space-y-12 sm:space-y-16">
           <div className="flex flex-col items-center text-center space-y-3">
-            <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-stone-900">Choose Your Path</h2>
-            <p className="text-stone-600 text-xs sm:text-sm max-w-xl mx-auto text-center">Select the tier that aligns with your authority goals and digital presence requirements.</p>
+            <span className="text-xs font-bold tracking-widest uppercase text-[#9e7d36]">Investment Tiers</span>
+            <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-[#111827]">Choose Your Path</h2>
+            <p className="text-[#374151] text-xs sm:text-sm max-w-xl mx-auto text-center">Select the tier that aligns with your authority goals and digital presence requirements.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 items-stretch">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-8 items-stretch">
             {[
               {
                 name: "CORE",
-                desc: "Get online.",
+                desc: "Get online with a pristine personal hub.",
+                popular: false,
                 features: [
-                  { text: "Personal Website", included: true },
-                  { text: "Basic SEO", included: true },
+                  { text: "Personal Website & Domain", included: true },
+                  { text: "Basic Personal SEO", included: true },
                   { text: "Google Search Setup", included: true },
-                  { text: "Professional Listings", included: false },
-                  { text: "Press & Media", included: false },
-                  { text: "Ongoing Presence", included: false },
+                  { text: "Professional Directory Listings", included: false },
+                  { text: "Press & Media Placement", included: false },
+                  { text: "Ongoing Authority Management", included: false },
                 ],
-                cta: "Get Started"
+                cta: "Select Core"
               },
               {
                 name: "PRO",
-                desc: "Get established.",
+                desc: "Get established as a recognized industry voice.",
+                popular: true,
                 features: [
-                  { text: "Personal Website", included: true },
-                  { text: "Basic SEO", included: true },
-                  { text: "Google Search Setup", included: true },
-                  { text: "Professional Listings", included: true },
-                  { text: "Advanced SEO", included: true },
-                  { text: "Press & Media", included: false },
-                  { text: "Ongoing Presence", included: false },
+                  { text: "Personal Website & Domain", included: true },
+                  { text: "Advanced Personal SEO", included: true },
+                  { text: "Google Search Setup & Schema", included: true },
+                  { text: "Professional Directory Listings", included: true },
+                  { text: "Advanced SERP Optimization", included: true },
+                  { text: "Press & Media Placement", included: false },
+                  { text: "Ongoing Authority Management", included: false },
                 ],
-                cta: "Get Started"
+                cta: "Select Pro"
               },
               {
                 name: "ELITE",
-                desc: "Get recognized.",
+                desc: "Get top-tier recognition & knowledge panel.",
+                popular: false,
                 features: [
-                  { text: "Personal Website", included: true },
-                  { text: "Advanced SEO", included: true },
-                  { text: "Google Search Setup", included: true },
-                  { text: "Professional Listings", included: true },
-                  { text: "Press & Media", included: true },
-                  { text: "Ongoing Presence", included: true },
+                  { text: "Personal Website & Domain", included: true },
+                  { text: "Advanced Personal SEO & Schema", included: true },
+                  { text: "Google Knowledge Panel Optimization", included: true },
+                  { text: "Professional Directory Listings", included: true },
+                  { text: "Press & Tier-1 Media Placement", included: true },
+                  { text: "Ongoing Authority Management", included: true },
                 ],
-                cta: "Get Started"
+                cta: "Select Elite"
               }
             ].map((pkg, i) => (
-              <div key={i} className="p-8 sm:p-10 border border-stone-200 bg-white flex flex-col justify-between hover:border-[#d7b36b]/60 transition-all shadow-sm rounded-xl">
+              <div 
+                key={i} 
+                className={`relative p-8 sm:p-10 border bg-white flex flex-col justify-between transition-all rounded-3xl ${
+                  pkg.popular 
+                    ? 'border-[#d7b36b] shadow-2xl ring-2 ring-[#d7b36b]/30 scale-[1.02] z-10 bg-gradient-to-b from-white via-[#fffcf9] to-white' 
+                    : 'border-[#e5dec9] shadow-xl hover:border-[#d7b36b]/70 hover:shadow-2xl'
+                }`}
+              >
+                {pkg.popular && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-[#d7b36b] text-white text-[10px] font-bold uppercase tracking-widest rounded-full shadow-md">
+                    Most Popular
+                  </div>
+                )}
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold mb-2 text-stone-900">{pkg.name}</h3>
-                  <p className="text-stone-600 mb-8 text-xs sm:text-sm">{pkg.desc}</p>
-                  <ul className="space-y-4 mb-10">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-1 text-[#111827]">{pkg.name}</h3>
+                  <p className="text-[#374151] mb-8 text-xs sm:text-sm min-h-[40px]">{pkg.desc}</p>
+                  
+                  <ul className="space-y-4 mb-10 border-t border-[#e5dec9] pt-6">
                     {pkg.features.map((feature, f) => (
-                      <li key={f} className={`${feature.included ? 'text-stone-900 font-medium' : 'text-stone-400'} text-xs sm:text-sm flex items-start gap-3`}>
-                        <span className={`${feature.included ? 'text-[#d7b36b] font-bold' : 'text-stone-300'} mt-0.5`}>
+                      <li key={f} className={`${feature.included ? 'text-[#111827] font-medium' : 'text-[#9ca3af]' } text-xs sm:text-sm flex items-start gap-3`}>
+                        <span className={`${feature.included ? 'text-[#d7b36b] font-bold' : 'text-[#d1d5db]'} mt-0.5 shrink-0`}>
                           {feature.included ? '✓' : '×'}
                         </span> 
                         <span>{feature.text}</span>
@@ -187,7 +347,15 @@ export function SignatureIdentityPage() {
                     ))}
                   </ul>
                 </div>
-                <a href="#contact" className="block text-center py-4 border border-[#d7b36b] text-[#d7b36b] font-bold uppercase tracking-widest text-xs hover:bg-[#d7b36b] hover:text-white transition-all rounded-lg">
+                
+                <a 
+                  href="#contact" 
+                  className={`block text-center py-4 font-bold uppercase tracking-widest text-xs transition-all rounded-2xl ${
+                    pkg.popular
+                      ? 'bg-[#d7b36b] text-white hover:bg-[#b8954d] shadow-lg shadow-[#d7b36b]/30'
+                      : 'border border-[#e5dec9] text-[#111827] hover:border-[#d7b36b] hover:text-[#d7b36b] bg-[#f4efe6]/50'
+                  }`}
+                >
                   {pkg.cta}
                 </a>
               </div>
@@ -196,42 +364,63 @@ export function SignatureIdentityPage() {
         </div>
       </section>
 
-      {/* SEO FAQ Section */}
-      <section className="py-20 sm:py-32 bg-white border-t border-stone-200">
-        <div className="max-w-5xl mx-auto px-6 space-y-16">
+      {/* Interactive FAQ Section */}
+      <section className="py-20 sm:py-32 bg-[#f4efe6] border-t border-[#e5dec9]" id="faq">
+        <div className="max-w-4xl mx-auto px-6 space-y-12">
           <div className="flex flex-col items-center text-center space-y-3">
-            <h2 className="text-2xl min-[380px]:text-3xl md:text-4xl font-bold tracking-tighter text-stone-900">Frequently Asked Questions</h2>
-            <p className="text-stone-600 text-xs sm:text-sm max-w-lg mx-auto text-center">Everything you need to know about Signature Identity and Google ranking.</p>
+            <span className="text-xs font-bold tracking-widest uppercase text-[#9e7d36]">Common Questions</span>
+            <h2 className="text-2xl min-[380px]:text-3xl md:text-4xl font-bold tracking-tighter text-[#111827]">Frequently Asked Questions</h2>
+            <p className="text-[#374151] text-xs sm:text-sm max-w-lg mx-auto text-center">Everything you need to know about Signature Identity and Google ranking.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-            <div className="p-8 border border-stone-200 bg-stone-50/50 flex flex-col justify-between space-y-3 rounded-xl">
-              <h3 className="font-bold text-stone-900 text-base">What is Signature Identity?</h3>
-              <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">Signature Identity is a specialized personal branding and digital presence engineering framework designed to position founders, executives, and creators as definitive industry authorities when searched on Google.</p>
-            </div>
-            <div className="p-8 border border-stone-200 bg-stone-50/50 flex flex-col justify-between space-y-3 rounded-xl">
-              <h3 className="font-bold text-stone-900 text-base">How does this help me rank on Google?</h3>
-              <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">We optimize your personal name search results by building authoritative structured data, verified directory listings, professional media placements, and clean personal website architecture.</p>
-            </div>
-            <div className="p-8 border border-stone-200 bg-stone-50/50 flex flex-col justify-between space-y-3 rounded-xl">
-              <h3 className="font-bold text-stone-900 text-base">How long does the setup take?</h3>
-              <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">Core digital presence and initial Google indexing are established within 5 to 7 business days, with continuous authority growth over subsequent weeks.</p>
-            </div>
-            <div className="p-8 border border-stone-200 bg-stone-50/50 flex flex-col justify-between space-y-3 rounded-xl">
-              <h3 className="font-bold text-stone-900 text-base">Do I need existing press mentions?</h3>
-              <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">No. Our Elite packages include strategic press and media syndication to help you establish the credibility required for top-tier Google rankings.</p>
-            </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div 
+                  key={idx}
+                  className="bg-white border border-[#e5dec9] rounded-2xl overflow-hidden transition-all shadow-md hover:border-[#d7b36b]"
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="w-full px-6 py-5 text-left font-bold text-[#111827] text-sm sm:text-base flex items-center justify-between gap-4 hover:text-[#9e7d36] transition-colors"
+                  >
+                    <span>{faq.q}</span>
+                    <span className={`transform transition-transform duration-200 text-[#9e7d36] font-bold text-lg ${isOpen ? 'rotate-45' : ''}`}>
+                      +
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className="px-6 pb-6 text-xs sm:text-sm text-[#374151] leading-relaxed border-t border-[#e5dec9] pt-4">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 sm:py-32 bg-stone-100 text-center border-t border-stone-200 flex flex-col items-center justify-center" id="contact">
-        <div className="max-w-5xl mx-auto px-6 flex flex-col items-center text-center space-y-8 w-full">
-          <h2 className="text-2xl min-[380px]:text-3xl md:text-5xl font-bold tracking-tighter text-stone-900">Ready to define your signature?</h2>
-          <p className="text-stone-600 text-sm sm:text-base max-w-xl mx-auto text-center leading-relaxed">Get in touch for a complimentary brand audit and digital presence roadmap consultation.</p>
+      <section className="py-20 sm:py-32 bg-[#111827] text-white text-center border-t border-[#1f2937] flex flex-col items-center justify-center relative overflow-hidden" id="contact">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(215,179,107,0.2),transparent_75%)] pointer-events-none" />
+        <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center text-center space-y-8 w-full">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1f2937] border border-[#d7b36b]/40 text-[#d7b36b] text-[11px] font-bold uppercase tracking-widest shadow-sm">
+            Ready to Begin?
+          </div>
+          <h2 className="text-3xl min-[380px]:text-4xl md:text-6xl font-black tracking-tight text-white">
+            Ready to define your signature?
+          </h2>
+          <p className="text-[#d1d5db] text-sm sm:text-base max-w-xl mx-auto text-center leading-relaxed">
+            Get in touch for a complimentary brand audit and executive digital presence roadmap consultation with our founders.
+          </p>
           <div className="pt-2">
-            <a href="mailto:hello@shyftednext.com?subject=Signature%20Identity%20Consultation" className="inline-flex items-center gap-2 px-10 py-5 bg-[#d7b36b] text-white font-bold uppercase tracking-widest text-xs sm:text-sm hover:bg-[#b8954d] transition-all rounded-lg shadow-sm">
-              Free Consultation <ArrowUpRight size={18} />
+            <a 
+              href="mailto:hello@shyftednext.com?subject=Signature%20Identity%20Consultation" 
+              className="inline-flex items-center gap-2.5 px-10 py-5 bg-[#d7b36b] text-white font-bold uppercase tracking-widest text-xs sm:text-sm hover:bg-[#b8954d] transition-all rounded-2xl shadow-2xl hover:scale-105 transform duration-200"
+            >
+              Claim Free Consultation <ArrowUpRight size={18} />
             </a>
           </div>
         </div>
