@@ -84,6 +84,7 @@ function AppContent() {
               <button onClick={() => handleScrollTo('services')} className="hover:text-white transition-colors">Solutions</button>
               <button onClick={() => handleScrollTo('process')} className="hover:text-white transition-colors">Process</button>
               <button onClick={() => navigate('/team')} className="hover:text-white transition-colors">Team</button>
+              <button onClick={() => navigate('/shyfted-next')} className="hover:text-white transition-colors">Shyfted Next 2.0</button>
               <button onClick={() => handleScrollTo('contact')} className="hover:text-white transition-colors">Contact</button>
             </div>
           </div>
