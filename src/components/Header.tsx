@@ -71,7 +71,6 @@ export const Header: React.FC<HeaderProps> = ({
     { label: 'Solutions', action: () => handleScrollTo('services') },
     { label: 'Process', action: () => handleScrollTo('process') },
     { label: 'Team', isLink: true, to: '/team' },
-    { label: 'Signature Identity', isLink: true, to: '/signature-identity', badge: 'New' },
   ];
 
   const renderNavElement = (item: MenuItem, isMobile = false) => {
