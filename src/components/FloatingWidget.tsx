@@ -55,7 +55,7 @@ export const FloatingWidget: React.FC<FloatingWidgetProps> = ({ onOpenInquiry })
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -20 }}
         className="fixed left-0 top-[68%] -translate-y-1/2 z-50 flex items-center cursor-pointer group"
-        onClick={() => navigate('/shyfted-next')}
+        onClick={() => navigate('/shyfted-next-2')}
       >
         <div className="relative flex items-center">
           {/* Slim side tab with two lines */}

@@ -69,7 +69,7 @@ function AppContent() {
         <Route path="/raiyan" element={<RaiyanBioPage />} />
         <Route path="/noman" element={<NomanBioPage />} />
         <Route path="/rabby" element={<RabbyBioPage />} />
-        <Route path="/shyfted-next" element={<ShyftedNextPage />} />
+        <Route path="/shyfted-next-2" element={<ShyftedNextPage />} />
       </Routes>
 
       <BlurReveal blurAmount={16} yOffset={20} duration={0.8}>
@@ -84,7 +84,6 @@ function AppContent() {
               <button onClick={() => handleScrollTo('services')} className="hover:text-white transition-colors">Solutions</button>
               <button onClick={() => handleScrollTo('process')} className="hover:text-white transition-colors">Process</button>
               <button onClick={() => navigate('/team')} className="hover:text-white transition-colors">Team</button>
-              <button onClick={() => navigate('/shyfted-next')} className="hover:text-white transition-colors">Shyfted Next 2.0</button>
               <button onClick={() => handleScrollTo('contact')} className="hover:text-white transition-colors">Contact</button>
             </div>
           </div>

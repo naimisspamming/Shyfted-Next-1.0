@@ -71,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({
     { label: 'Solutions', action: () => handleScrollTo('services') },
     { label: 'Process', action: () => handleScrollTo('process') },
     { label: 'Team', isLink: true, to: '/team' },
-    { label: 'Shyfted Next', isLink: true, to: '/shyfted-next', badge: '2.0' },
+    { label: 'Shyfted Next', isLink: true, to: '/shyfted-next-2', badge: '2.0' },
   ];
 
   const renderNavElement = (item: MenuItem, isMobile = false) => {
