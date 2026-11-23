@@ -1,22 +1,30 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'motion/react';
+import { SITE_CONFIG } from './config/siteConfig';
 import { Header } from './components/Header';
-import { SectionDivider } from './components/SectionDivider';
 import { ShyftedLogo } from './components/Logo';
-import { BlurReveal } from './components/BlurReveal';
 import { HomePage } from './pages/HomePage';
+import { SolutionsPage } from './pages/SolutionsPage';
+import { SolutionDetailPage } from './pages/SolutionDetailPage';
+import { CustomDevelopmentPage } from './pages/CustomDevelopmentPage';
+import { AboutPage } from './pages/AboutPage';
+import { ContactPage } from './pages/ContactPage';
 import { TeamPage } from './pages/TeamPage';
 import { NaimurBioPage } from './pages/NaimurBioPage';
 import { MohaddesBioPage } from './pages/MohaddesBioPage';
 import { RaiyanBioPage } from './pages/RaiyanBioPage';
 import { NomanBioPage } from './pages/NomanBioPage';
 import { RabbyBioPage } from './pages/RabbyBioPage';
-import { ShyftedNextPage } from './pages/ShyftedNextPage';
-import { ProjectModal } from './components/ProjectModal';
 import { ContactDrawer } from './components/ContactDrawer';
-import { FloatingWidget } from './components/FloatingWidget';
-import { PortfolioProject } from './types';
+
+function NotFound() {
+  return (
+    <div className="max-w-5xl mx-auto px-4 py-24 text-center">
+      <h1 className="text-4xl font-black text-[#111827] mb-3">404</h1>
+      <p className="text-[#6B7280]">The page you are looking for does not exist.</p>
+    </div>
+  );
+}
 
 function AppContent() {
   const navigate = useNavigate();
@@ -25,16 +33,15 @@ function AppContent() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [location.pathname]);
-  const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null);
-  const [isContactOpen, setIsContactOpen] = useState(false);
-  const [contactInitialService, setContactInitialService] = useState<string>('video-editing');
-  const [contactInitialProjectTitle, setContactInitialProjectTitle] = useState<string | undefined>();
-  const [contactFlowType, setContactFlowType] = useState<'free-design' | 'basic-plan' | 'standard-plan' | 'premium-plan' | 'generic'>('generic');
 
-  const handleOpenInquiry = (service: string = 'video-editing', projectTitle?: string, flowType: 'free-design' | 'basic-plan' | 'standard-plan' | 'premium-plan' | 'generic' = 'generic') => {
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [contactInitialService, setContactInitialService] = useState<string>('custom-development');
+  const [contactInitialProjectTitle, setContactInitialProjectTitle] = useState<string | undefined>();
+  const [contactFlowType, setContactFlowType] = useState<'generic'>('generic');
+
+  const handleOpenInquiry = (service: string = 'custom-development', projectTitle?: string) => {
     setContactInitialService(service);
     setContactInitialProjectTitle(projectTitle);
-    setContactFlowType(flowType);
     setIsContactOpen(true);
   };
 
@@ -53,50 +60,54 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-[#07010e] bg-purple-ambient text-purple-50 flex flex-col selection:bg-purple-500 selection:text-white font-sans">
-      <AnimatePresence>
-      </AnimatePresence>
-      
       <Header
         onScrollTo={handleScrollTo}
-        onOpenContact={() => handleOpenInquiry('video-editing', undefined, 'free-design')}
+        onOpenContact={() => handleOpenInquiry('custom-development')}
+        rotatingTexts={['Get Started', 'Request a Quote']}
+        menuItems={[
+          { label: 'Home', isLink: true, to: '/' },
+          { label: 'Solutions', isLink: true, to: '/solutions' },
+          { label: 'Custom Development', isLink: true, to: '/custom-development' },
+          { label: 'About Us', isLink: true, to: '/about' },
+          { label: 'Contact', isLink: true, to: '/contact' },
+          { label: 'Team', isLink: true, to: '/team' },
+        ]}
       />
 
-      <Routes>
-        <Route path="/" element={<HomePage handleScrollTo={handleScrollTo} handleOpenInquiry={handleOpenInquiry} setSelectedProject={setSelectedProject} />} />
-        <Route path="/team" element={<TeamPage />} />
-        <Route path="/naimur" element={<NaimurBioPage />} />
-        <Route path="/mohaddes" element={<MohaddesBioPage />} />
-        <Route path="/raiyan" element={<RaiyanBioPage />} />
-        <Route path="/noman" element={<NomanBioPage />} />
-        <Route path="/rabby" element={<RabbyBioPage />} />
-        <Route path="/shyfted-next-2" element={<ShyftedNextPage />} />
-      </Routes>
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<HomePage handleScrollTo={handleScrollTo} handleOpenInquiry={handleOpenInquiry} />} />
+          <Route path="/solutions" element={<SolutionsPage handleOpenInquiry={handleOpenInquiry} />} />
+          <Route path="/solutions/:slug" element={<SolutionDetailPage handleOpenInquiry={handleOpenInquiry} />} />
+          <Route path="/custom-development" element={<CustomDevelopmentPage handleOpenInquiry={handleOpenInquiry} />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/team" element={<TeamPage />} />
+          <Route path="/naimur" element={<NaimurBioPage />} />
+          <Route path="/mohaddes" element={<MohaddesBioPage />} />
+          <Route path="/raiyan" element={<RaiyanBioPage />} />
+          <Route path="/noman" element={<NomanBioPage />} />
+          <Route path="/rabby" element={<RabbyBioPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
 
-      <BlurReveal blurAmount={16} yOffset={20} duration={0.8}>
-        <footer className="border-t border-purple-500/15 bg-[#05010a] py-8 text-xs text-purple-300/70 mt-20">
-          <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <ShyftedLogo size="xs" />
-            </div>
-            <div>© {new Date().getFullYear()} Shyfted Next Creative Studio.</div>
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-purple-300/70">
-              <button onClick={() => handleScrollTo('work')} className="hover:text-white transition-colors">Work</button>
-              <button onClick={() => handleScrollTo('services')} className="hover:text-white transition-colors">Solutions</button>
-              <button onClick={() => handleScrollTo('process')} className="hover:text-white transition-colors">Process</button>
-              <button onClick={() => navigate('/team')} className="hover:text-white transition-colors">Team</button>
-              <button onClick={() => handleScrollTo('contact')} className="hover:text-white transition-colors">Contact</button>
-            </div>
+      <footer className="border-t border-purple-500/15 bg-[#05010a] py-8 text-xs text-purple-300/70 mt-20">
+        <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <ShyftedLogo size="xs" />
           </div>
-        </footer>
-      </BlurReveal>
-
-      <Suspense fallback={null}>
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-          onOpenInquiry={handleOpenInquiry}
-        />
-      </Suspense>
+          <div>© {new Date().getFullYear()} Shyfted Next.</div>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-purple-300/70">
+            <button onClick={() => navigate('/')} className="hover:text-white transition-colors">Home</button>
+            <button onClick={() => navigate('/solutions')} className="hover:text-white transition-colors">Solutions</button>
+            <button onClick={() => navigate('/custom-development')} className="hover:text-white transition-colors">Custom Development</button>
+            <button onClick={() => navigate('/about')} className="hover:text-white transition-colors">About</button>
+            <button onClick={() => navigate('/contact')} className="hover:text-white transition-colors">Contact</button>
+            <button onClick={() => navigate('/team')} className="hover:text-white transition-colors">Team</button>
+          </div>
+        </div>
+      </footer>
 
       <Suspense fallback={null}>
         <ContactDrawer
@@ -104,11 +115,9 @@ function AppContent() {
           onClose={() => setIsContactOpen(false)}
           initialService={contactInitialService}
           initialProjectTitle={contactInitialProjectTitle}
-          flowType={contactFlowType}
+          flowType="generic"
         />
       </Suspense>
-
-      <FloatingWidget onOpenInquiry={handleOpenInquiry} />
     </div>
   );
 }

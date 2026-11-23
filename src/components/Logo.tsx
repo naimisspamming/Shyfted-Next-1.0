@@ -54,8 +54,8 @@ export const ShyftedLogo: React.FC<LogoProps> = ({
         <div className="relative z-10 flex flex-col items-center">
           {logoImage}
           {withTagline && (
-            <span className="mt-2 text-[10px] tracking-widest text-purple-300 font-bold uppercase">
-              Videos &middot; Websites
+            <span className="mt-2 text-[10px] tracking-widest text-[#6B7280] font-bold uppercase">
+              Web Applications
             </span>
           )}
         </div>
@@ -67,8 +67,8 @@ export const ShyftedLogo: React.FC<LogoProps> = ({
     <div className={`inline-flex flex-col items-start ${className}`}>
       {logoImage}
       {withTagline && (
-        <span className="mt-0.5 text-[9px] tracking-widest text-purple-300 font-semibold uppercase pl-1">
-          Videos &middot; Websites
+        <span className="mt-0.5 text-[9px] tracking-widest text-[#6B7280] font-semibold uppercase pl-1">
+          Web Applications
         </span>
       )}
     </div>
