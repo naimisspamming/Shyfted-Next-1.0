@@ -57,5 +57,16 @@
 }
 .si-spin-anim {
   animation: counter-spin 24s linear infinite;
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-anim {
+  animation: float-y 6s ease-in-out infinite;
+}
+.float-anim-slow {
+  animation: float-y 8s ease-in-out infinite;
+}
   animation-delay: var(--d);
 }
+

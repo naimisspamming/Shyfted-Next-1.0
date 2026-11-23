@@ -1,6 +1,6 @@
 {
   "name": "Shyfted Next",
-  "description": "Shyfted Next provides professional video editing and modern website redesign services, helping businesses and brands build a stronger digital presence.",
+  "description": "Shyfted Next builds professional personal websites — ready-made personal website solutions and custom personal websites tailored to your identity.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }
